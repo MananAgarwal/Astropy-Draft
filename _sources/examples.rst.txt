@@ -1,0 +1,218 @@
+==========
+ Examples
+==========
+
+Various examples of Bootstrap styling applied to Sphinx constructs. You can
+view the `source <./_sources/examples.txt>`_ of this page to see the specific
+reStructuredText used to create these examples.
+
+Headings
+========
+This is a first level heading (``h1``).
+
+Sub-Heading
+-----------
+This is a second level heading (``h2``).
+
+Sub-Sub-Heading
+~~~~~~~~~~~~~~~
+This is a third level heading (``h3``).
+
+
+Code
+====
+The Sphinx Bootstrap Theme uses Bootstrap styling for ``inline code text`` and
+::
+
+    multiline
+    code text
+
+Here's an included example with line numbers.
+
+.. literalinclude:: ../../sphinx_bootstrap_theme/__init__.py
+   :linenos:
+
+It also works with existing Sphinx highlighting:
+
+.. code-block:: html
+
+    <html>
+      <body>Hello World</body>
+    </html>
+
+.. code-block:: python
+
+    def hello():
+        """Greet."""
+        return "Hello World"
+
+.. code-block:: javascript
+
+    /**
+     * Greet.
+     */
+    function hello(): {
+      return "Hello World";
+    }
+
+
+Admonitions
+===========
+The Sphinx Bootstrap Theme uses the Bootstrap ``alert`` classes for Sphinx
+admonitions.
+
+Note
+----
+.. note:: This is a **note**.
+
+Todo
+----
+.. todo:: This is a **todo**.
+
+Warning
+-------
+.. warning:: This is a **warning**.
+
+Danger
+------
+.. danger:: This is **danger**-ous.
+
+Footnotes
+=========
+I have footnoted a first item [#f1]_ and second item [#f2]_.
+This also references the second item [#f2]_.
+
+.. rubric:: Footnotes
+.. [#f1] My first footnote.
+.. [#f2] My second footnote.
+
+Icons
+=====
+Icons are different in Bootstrap 2 and 3, so you will only see an
+icon below for the version of Bootstrap that we used to build these docs.
+
+Bootstrap 2
+-----------
+The following template HTML:
+
+.. code-block:: html
+
+    <span class="icon-star-empty"></span>
+
+translates to a neat star:
+
+.. raw:: html
+
+    <span class="icon-star-empty"></span>
+
+Bootstrap 3
+-----------
+The following template HTML:
+
+.. code-block:: html
+
+    <span class="glyphicon glyphicon-star-empty"></span>
+
+translates to a neat star:
+
+.. raw:: html
+
+    <span class="glyphicon glyphicon-star-empty"></span>
+
+Tables
+======
+Here are some examples of Sphinx
+`tables <http://sphinx-doc.org/rest.html#rst-tables>`_. The Sphinx Bootstrap
+Theme removes all Sphinx ``docutils`` classes and replaces them with the
+default Bootstrap ``table`` class.  You can add additional table classes
+using the Sphinx ``cssclass::`` directive, as demonstrated in the following
+tables.
+
+Grid
+----
+A "**bordered**" grid table:
+
+.. cssclass:: table-bordered
+
++------------------------+------------+----------+----------+
+| Header1                | Header2    | Header3  | Header4  |
++========================+============+==========+==========+
+| row1, cell1            | cell2      | cell3    | cell4    |
++------------------------+------------+----------+----------+
+| row2 ...               | ...        | ...      |          |
++------------------------+------------+----------+----------+
+| ...                    | ...        | ...      |          |
++------------------------+------------+----------+----------+
+
+which uses the directive::
+
+    .. cssclass:: table-bordered
+
+Simple
+------
+A simple "**striped**" table:
+
+.. cssclass:: table-striped
+
+=====  =====  =======
+H1     H2     H3
+=====  =====  =======
+cell1  cell2  cell3
+...    ...    ...
+...    ...    ...
+=====  =====  =======
+
+which uses the directive::
+
+    .. cssclass:: table-striped
+
+And a "**hoverable**" table:
+
+.. cssclass:: table-hover
+
+=====  =====  =======
+H1     H2     H3
+=====  =====  =======
+cell1  cell2  cell3
+...    ...    ...
+...    ...    ...
+=====  =====  =======
+
+which uses the directive::
+
+    .. cssclass:: table-hover
+
+Code Documentation
+==================
+
+An example Python function.
+
+.. py:function:: format_exception(etype, value, tb[, limit=None])
+
+   Format the exception with a traceback.
+
+   :param etype: exception type
+   :param value: exception value
+   :param tb: traceback object
+   :param limit: maximum number of stack frames to show
+   :type limit: integer or None
+   :rtype: list of strings
+
+An example JavaScript function.
+
+.. js:class:: MyAnimal(name[, age])
+
+   :param string name: The name of the animal
+   :param number age: an optional age for the animal
+
+Blog
+====
+GSoC Diaries 2.01
+
+Hello World,
+
+I completed two weeks of coding with Astropy yesterday, which means we are already half though the first Coding Phase of GSoC! These two weeks began by me developing the landing page of Learn Astropy Website using bootstrap 3. This was not a functioning webpage, as it had many parts hardcoded which must have been be dynamically rendered based on the search query. But it gave us an idea about how the page will look like on a webbrowser and how the overall user interaction with it will fell like. I realised that to smoothen the user experience I had to make some minor changes like placements of some components, priortising information hierarchy, tweaking the shade of some colors so that it grabs users attention subcontiously.
+
+The next task was obviously to make this dummy page into a functioning (atleast partially) webpage. So for this I had planned on using Sphinx documentaion tool, which makes it easy to create intelligent documentation. It was originally created for the Python documentation. As this was my first time using Sphinx, it took me some time to understand its workflow. I realised it the hard way that Sphinx focuses primarily on the functionality of a documentation and not on how beautiful can we make it look. Though it provides some built-in themes but non of them satisfies the design standards for this decade and its not easy to edit these. So I had to make my own theme which was consistent with the mockups. As I also wanted structural changes, I had to first create a sphinx template and for that I ended up learning Jinja which is a templating engine. Sounds like a lot right! But trust me, these are all easy to understand but the problem is lack of intuitive interface and a developer community to update these to the new standards. Luckily I found a github repository of customisable sphinx theme using bootstrap. This should reduce my work exponentially, as now bootstrap can take care of responsiviness and consistency. I have started building my own template and custom theme for Learn Astropy. Last week was not so productive for me, but hopefully i'll cover up this week now that i have developed decent understand of Sphinx.
+
+I better start coding :) .See you guys in the next GSoC diary. Happy Coding folks!
