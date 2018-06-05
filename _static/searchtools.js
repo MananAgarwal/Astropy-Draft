@@ -220,7 +220,7 @@ var Scorer = {
   objPrioDefault: 0,
 
   // query found in title
-  title: 15,
+  title: 20,
   // query found in terms
   term: 5
 };
@@ -514,7 +514,7 @@ var Search = {
       // results left, load the summary and display it
       if (results.length) {
         var item = results.pop();
-        var listItem = $('<li style="display:none"></li>');
+        var listItem = $('<li style="display:none" class="result-card"></li>');
         if (DOCUMENTATION_OPTIONS.FILE_SUFFIX === '') {
           // dirhtml builder
           var dirname = item[0] + '/';
@@ -566,7 +566,7 @@ var Search = {
       // search finished, update title and status message
       else {
         Search.stopPulse();
-        Search.title.text(_('Search Results'));
+        Search.title.text(_(''));
         if (!resultCount)
           Search.status.text(_('Your search did not match any documents. Please make sure that all words are spelled correctly and that you\'ve selected enough categories.'));
         else
@@ -746,8 +746,8 @@ var Search = {
     });
     start = Math.max(start - 120, 0);
     var excerpt = ((start > 0) ? '...' : '') +
-      $.trim(text.substr(start, 240)) +
-      ((start + 240 - text.length) ? '...' : '');
+      $.trim(text.substr(start, 300)) +
+      ((start + 300 - text.length) ? '...' : '');
     var rv = $('<div class="context"></div>').text(excerpt);
     $.each(hlwords, function() {
       rv = rv.highlightText(this, 'highlighted');
