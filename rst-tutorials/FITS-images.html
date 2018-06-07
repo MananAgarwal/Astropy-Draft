@@ -21,8 +21,6 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Viewing and manipulating data from FITS tables" href="FITS-tables.html" />
-    <link rel="prev" title="Edit a FITS header" href="FITS-header.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -36,20 +34,20 @@
 
 
 <nav class="navbar navbar-expand-lg bg-navbar">
-  <a class="navbar-brand" href="/index.html">Learn.Astropy</a>
+  <a class="navbar-brand" href="/">Learn.Astropy</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarColor01">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Astropy<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href=""http://www.astropy.org/>Astropy<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Modules</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0" action="" method="get">
+    <form class="form-inline my-2 my-lg-0" action="../search.html" method="get">
       <div class="input-group-prepend">
           <button class="input-group-text" style="padding: 0.7rem"><i class="fa fa-search fa-fw"></i></button>
       </div>
@@ -66,8 +64,33 @@
     
     
     
+    
+    <div class="col-md-12 content-padding card toc-card">
+        <h2>Table of contents</h2>
+        <ul>
+<li><a class="reference internal" href="#">Viewing and manipulating FITS images</a><ul>
+<li><a class="reference internal" href="#opening-fits-files-and-loading-the-image-data">Opening FITS files and loading the image data</a><ul>
+<li><a class="reference internal" href="#shortcut">SHORTCUT</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#viewing-the-image-data-and-getting-basic-statistics">Viewing the image data and getting basic statistics</a><ul>
+<li><a class="reference internal" href="#plotting-a-histogram">Plotting a histogram</a></li>
+<li><a class="reference internal" href="#displaying-the-image-with-a-logarithmic-scale">Displaying the image with a logarithmic scale</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#basic-image-math-image-stacking">Basic image math: image stacking</a></li>
+<li><a class="reference internal" href="#writing-image-data-to-a-fits-file">Writing image data to a FITS file</a></li>
+<li><a class="reference internal" href="#exercises">Exercises</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>    
+    
+
     <div class="col-md-12 content-padding card">
-      
+      <div>  
+        
   <a href="../_static/FITS-images/FITS-images.ipynb"><button id="download">Download tutorial notebook</button></a>
 <a href="https://beta.mybinder.org/v2/gh/astropy/astropy-tutorials/master?filepath=/tutorials/notebooks/FITS-images/FITS-images.ipynb"><button id="binder">Interactive tutorial notebook</button></a>
 
@@ -322,6 +345,7 @@ data)</p>
 </div>
 
 
+      </div>  
     </div>
       
   </div>

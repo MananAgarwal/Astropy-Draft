@@ -738,16 +738,53 @@ var Search = {
    */
   makeSearchSummary : function(text, keywords, hlwords) {
     var textLower = text.toLowerCase();
-    var start = 0;
+    
+    var startPoint = textLower.indexOf('====',0);
+    console.log(startPoint);
+    var start = startPoint;
+    var sentenceStart = 0;  
     $.each(keywords, function() {
-      var i = textLower.indexOf(this.toLowerCase());
-      if (i > -1)
-        start = i;
-    });
-    start = Math.max(start - 120, 0);
-    var excerpt = ((start > 0) ? '...' : '') +
+      var finderStart = startPoint;
+      var flag = 0;
+    
+      var firstFound =-1;
+  
+      while(flag==0 && sentenceStart!=80){
+        var i = textLower.indexOf(this.toLowerCase(),finderStart);
+        console.log("this", this.toLowerCase());
+        if (i > -1)
+          start = i;
+        else if (i==-1 && firstFound!=-1)
+          {start = firstFound;
+           sentenceStart=0;
+           flag =1;
+           break;}
+      console.log("Starting point", start);
+  
+      for( sentenceStart = 0; sentenceStart<80; sentenceStart++){ 
+        if((text.charAt(start - sentenceStart) == '>') || (text.charAt(start - sentenceStart) == '<')) {
+          finderStart = start+1;
+          if(finderStart == startPoint)
+          {firstFound = start;}
+          console.log("finderStart" , finderStart);
+          console.log("start" , start);
+  
+          break;
+        }
+        else if(text.charAt(start - sentenceStart) == '.') {
+          flag = 1;
+          break;}
+      }
+  }
+ 
+  });
+    start = Math.max(start - sentenceStart, 0);
+    var trimmedText = ((start > 0) ? '...' : '') +
       $.trim(text.substr(start, 300)) +
       ((start + 300 - text.length) ? '...' : '');
+    
+    var excerpt = trimmedText.replace(/[`~!@#$%^&*()_|+\-=?:'"<>\{\}\[\]\\\/]/gi, '');
+          
     var rv = $('<div class="context"></div>').text(excerpt);
     $.each(hlwords, function() {
       rv = rv.highlightText(this, 'highlighted');
@@ -759,3 +796,45 @@ var Search = {
 $(document).ready(function() {
   Search.init();
 });
+
+
+/*
+
+  makeSearchSummary : function(text, keywords, hlwords) {
+    var textLower = text.toLowerCase();
+    var start = 0;
+    var finderStart = 0;
+    var flag = 0;
+    var sentenceStart = 0;  
+
+    var keyworkCount = 0;
+    $.each(keywords, function() {
+    while(flag==0 || sentenceStart!=120){
+      var i = textLower.indexOf(this.toLowerCase(),finderStart);
+      if (i > -1)
+        start = i;
+    console.log("Starting point", keyworkCount , start);
+
+    for( sentenceStart = 0; sentenceStart<120; sentenceStart++){ //Randomly choosen 120 character limit
+      if(text.charAt(start - sentenceStart) == '>' || text.charAt(start - sentenceStart) == '<') {
+        finderStart = sentenceStart+1;
+        break;
+      }
+      else if(text.charAt(start - sentenceStart) == '.') {  //searches for the first fullstop before the keyword
+        flag = 1;
+        break;}
+    }
+    console.log(sentenceStart);
+   }
+  });
+    start = Math.max(start - sentenceStart, 0);
+    var excerpt = ((start > 0) ? '...' : '') +
+      $.trim(text.substr(start, 300)) +
+      ((start + 300 - text.length) ? '...' : '');
+    var rv = $('<div class="context"></div>').text(excerpt);
+    $.each(hlwords, function() {
+      rv = rv.highlightText(this, 'highlighted');
+    });
+    return rv;
+  }
+  */
