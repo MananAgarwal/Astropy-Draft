@@ -194,7 +194,6 @@ var Stemmer = function() {
 }
 
 
-
 /**
  * Simple result scoring code.
  */
@@ -224,9 +223,6 @@ var Scorer = {
   // query found in terms
   term: 5
 };
-
-
-
 
 
 var splitChars = (function() {
@@ -305,7 +301,8 @@ var splitChars = (function() {
 })();
 
 function splitQuery(query) {
-    var result = [];
+
+  var result = [];
     var start = -1;
     for (var i = 0; i < query.length; i++) {
         if (splitChars[query.charCodeAt(i)]) {
@@ -323,9 +320,7 @@ function splitQuery(query) {
     return result;
 }
 
-
-
-
+var totalDocResults = -1;
 /**
  * Search Module
  */
@@ -400,7 +395,7 @@ var Search = {
     this.title = $('<h2>' + _('Searching') + '</h2>').appendTo(this.out);
     this.dots = $('<span></span>').appendTo(this.title);
     this.status = $('<p style="display: none"></p>').appendTo(this.out);
-    this.output = $('<ul class="search"/>').appendTo(this.out);
+    this.output = $('<ul id="search-results-list"/>').appendTo(this.out);
 
     $('#search-progress').text(_('Preparing search...'));
     this.startPulse();
@@ -410,6 +405,32 @@ var Search = {
       this.query(query);
     else
       this.deferQuery(query);
+
+    //Perform search in Astropy Documentation
+      var docResponse = null;
+      var docResult = '';
+      $.get('https://readthedocs.org/api/v2/docsearch/?q=' + window.location.search.split('=')[1] + '&project=astropy&version=stable&language=en', function(response){
+        docResponse = response;
+        //limits the maximum results from the documentation to 15
+        totalDocResults = (docResponse.results.hits.total>15)? 15 : docResponse.results.hits.total ;
+        
+        for(var i = 0; i < totalDocResults; i++ ) {
+          docResult += '<li style="" class="result-card doc"> <a href="' + 
+                            docResponse.results.hits.hits[i].fields.link + '.html' +  
+                            '?highlight=' + window.location.search.split('=')[1] + '">' +
+                            docResponse.results.hits.hits[i].fields.title[0] + '</a>' +
+                            '<div class="context">' + 
+                            docResponse.results.hits.hits[i].highlight.content[0] +
+                            docResponse.results.hits.hits[i].highlight.content[1] +
+                            '</div> </li>';
+        }
+        if(i == totalDocResults)
+          {
+           var inject = document.getElementById('search-results-list');
+           inject.innerHTML += docResult;
+          }
+      });
+  
   },
 
   /**
@@ -514,7 +535,7 @@ var Search = {
       // results left, load the summary and display it
       if (results.length) {
         var item = results.pop();
-        var listItem = $('<li style="display:none" class="result-card"></li>');
+        var listItem = $('<li style="display:none" class="result-card tutorial"></li>');
         if (DOCUMENTATION_OPTIONS.FILE_SUFFIX === '') {
           // dirhtml builder
           var dirname = item[0] + '/';
@@ -535,6 +556,7 @@ var Search = {
         if (item[3]) {
           listItem.append($('<span> (' + item[3] + ')</span>'));
           Search.output.append(listItem);
+          
           listItem.slideDown(5, function() {
             displayNextItem();
           });
@@ -561,16 +583,23 @@ var Search = {
           listItem.slideDown(5, function() {
             displayNextItem();
           });
-        }
+        }   
       }
       // search finished, update title and status message
       else {
         Search.stopPulse();
         Search.title.text(_(''));
         if (!resultCount)
-          Search.status.text(_('Your search did not match any documents. Please make sure that all words are spelled correctly and that you\'ve selected enough categories.'));
-        else
-            Search.status.text(_('Search finished, found %s page(s) matching the search query.').replace('%s', resultCount));
+          {Search.status.text(_('Your search did not match any documents. Please make sure that all words are spelled correctly and that you\'ve selected enough categories.'));}
+        // else 
+          // {Search.status.text(_('Search finished, found %s page(s) matching the search query.').replace('%s', noOfResults));}  
+        else if (totalDocResults==-1)
+          { 
+            setTimeout(function(){
+              noOfResults = resultCount + totalDocResults;
+              Search.status.text(_('Search finished, found %s page(s) matching the search query.').replace('%s', noOfResults));
+            }, 3000); 
+          }
         Search.status.fadeIn(500);
       }
     }
@@ -768,7 +797,6 @@ var Search = {
           {firstFound = start;}
           console.log("finderStart" , finderStart);
           console.log("start" , start);
-  
           break;
         }
         else if(text.charAt(start - sentenceStart) == '.') {
@@ -796,45 +824,3 @@ var Search = {
 $(document).ready(function() {
   Search.init();
 });
-
-
-/*
-
-  makeSearchSummary : function(text, keywords, hlwords) {
-    var textLower = text.toLowerCase();
-    var start = 0;
-    var finderStart = 0;
-    var flag = 0;
-    var sentenceStart = 0;  
-
-    var keyworkCount = 0;
-    $.each(keywords, function() {
-    while(flag==0 || sentenceStart!=120){
-      var i = textLower.indexOf(this.toLowerCase(),finderStart);
-      if (i > -1)
-        start = i;
-    console.log("Starting point", keyworkCount , start);
-
-    for( sentenceStart = 0; sentenceStart<120; sentenceStart++){ //Randomly choosen 120 character limit
-      if(text.charAt(start - sentenceStart) == '>' || text.charAt(start - sentenceStart) == '<') {
-        finderStart = sentenceStart+1;
-        break;
-      }
-      else if(text.charAt(start - sentenceStart) == '.') {  //searches for the first fullstop before the keyword
-        flag = 1;
-        break;}
-    }
-    console.log(sentenceStart);
-   }
-  });
-    start = Math.max(start - sentenceStart, 0);
-    var excerpt = ((start > 0) ? '...' : '') +
-      $.trim(text.substr(start, 300)) +
-      ((start + 300 - text.length) ? '...' : '');
-    var rv = $('<div class="context"></div>').text(excerpt);
-    $.each(hlwords, function() {
-      rv = rv.highlightText(this, 'highlighted');
-    });
-    return rv;
-  }
-  */
