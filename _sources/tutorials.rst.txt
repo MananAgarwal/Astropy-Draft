@@ -1,5 +1,5 @@
-Astropy Tutorials
-=================
+Tutorials
+=========
 
 The tutorials on this site walk through some typical software tasks and
 demonstrate the features in Astropy sub-packages in the context of a story or

@@ -320,7 +320,7 @@ function splitQuery(query) {
     return result;
 }
 
-var totalDocResults = -1;
+var docResultsCount = -1;
 /**
  * Search Module
  */
@@ -412,9 +412,9 @@ var Search = {
       $.get('https://readthedocs.org/api/v2/docsearch/?q=' + window.location.search.split('=')[1] + '&project=astropy&version=stable&language=en', function(response){
         docResponse = response;
         //limits the maximum results from the documentation to 15
-        totalDocResults = (docResponse.results.hits.total>15)? 15 : docResponse.results.hits.total ;
+        docResultsCount = (docResponse.results.hits.total>15)? 15 : docResponse.results.hits.total ;
         
-        for(var i = 0; i < totalDocResults; i++ ) {
+        for(var i = 0; i < docResultsCount; i++ ) {
           docResult += '<li style="" class="result-card doc"> <a href="' + 
                             docResponse.results.hits.hits[i].fields.link + '.html' +  
                             '?highlight=' + window.location.search.split('=')[1] + '">' +
@@ -424,7 +424,7 @@ var Search = {
                             docResponse.results.hits.hits[i].highlight.content[1] +
                             '</div> </li>';
         }
-        if(i == totalDocResults)
+        if(i == docResultsCount)
           {
            var inject = document.getElementById('search-results-list');
            inject.innerHTML += docResult;
@@ -530,7 +530,7 @@ var Search = {
     //console.info('search results:', Search.lastresults);
 
     // print the results
-    var resultCount = results.length;
+    var tutResultsCount = results.length;
     function displayNextItem() {
       // results left, load the summary and display it
       if (results.length) {
@@ -589,18 +589,19 @@ var Search = {
       else {
         Search.stopPulse();
         Search.title.text(_(''));
-        if (!resultCount)
-          {Search.status.text(_('Your search did not match any documents. Please make sure that all words are spelled correctly and that you\'ve selected enough categories.'));}
-        // else 
-          // {Search.status.text(_('Search finished, found %s page(s) matching the search query.').replace('%s', noOfResults));}  
-        else if (totalDocResults==-1)
-          { 
-            setTimeout(function(){
-              noOfResults = resultCount + totalDocResults;
-              Search.status.text(_('Search finished, found %s page(s) matching the search query.').replace('%s', noOfResults));
-            }, 3000); 
-          }
-        Search.status.fadeIn(500);
+        //setTimeout to wait for the documentation query to complete
+        setTimeout(function(){
+          if(docResultsCount == -1) {
+            docResultsCount = 0;
+            }
+          if (!tutResultsCount && !docResultsCount) {
+            Search.status.text(_('Your search did not match any documents. Please make sure that all words are spelled correctly and that you\'ve selected enough categories.'));
+            }
+          else {
+            Search.status.text(_('Search finished, found '+ tutResultsCount +' tutorial(s) and '+ docResultsCount +' documentation(s) matching the search query.'));
+            }
+          Search.status.fadeIn(500);
+        }, 3000);
       }
     }
     displayNextItem();

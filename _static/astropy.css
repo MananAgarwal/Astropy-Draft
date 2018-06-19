@@ -5,6 +5,7 @@ body{
 
 a{
   text-decoration: none !important;
+  font-weight: bold;
   color: black !important;
 }
 
@@ -143,6 +144,10 @@ a :hover{
   margin-bottom: 25px;
 }
 
+.toc-card a {
+  font-weight: normal;
+}
+
 .card #download, .card #binder {
   display: inline-block;
   font-weight: 400;
@@ -189,4 +194,25 @@ pre {
 
 span.highlighted {
   background-color: #fbe54e85;
+}
+
+/* Responsivness */
+@media only screen and (max-width: 850px) {
+  #astropy-logo {
+    width: 50vw;
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  #astropy-logo {
+    width: 70vw;
+  }
+
+  .card {
+    margin: 7px auto !important;
+  }
+
+  body {
+    background-color: #fafafa;
+  }
 }
