@@ -15,6 +15,16 @@
 
 .. _FITS-tables:
 
+Viewing and manipulating data from FITS tables
+==============================================
+
+FITS files can often contain large amount of multi-dimensional data and
+tables.
+
+In this particular example, I will open a FITS file from a Chandra
+observation of the Galactic Center. The file contains a list of events
+with x and y coordinates, energy, and various other pieces of
+information.
 
 :inputnumrole:`In[1]:`
 
@@ -41,16 +51,6 @@ this tutorial.
 
     from astropy.utils.data import download_file
 
-Viewing and manipulating data from FITS tables
-==============================================
-
-FITS files can often contain large amount of multi-dimensional data and
-tables.
-
-In this particular example, I will open a FITS file from a Chandra
-observation of the Galactic Center. The file contains a list of events
-with x and y coordinates, energy, and various other pieces of
-information.
 
 
 :inputnumrole:`In[3]:`

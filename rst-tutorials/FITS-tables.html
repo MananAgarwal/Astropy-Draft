@@ -91,7 +91,15 @@
   <a href="../_static/FITS-tables/FITS-tables.ipynb"><button id="download">Download tutorial notebook</button></a>
 <a href="https://beta.mybinder.org/v2/gh/astropy/astropy-tutorials/master?filepath=/tutorials/notebooks/FITS-tables/FITS-tables.ipynb"><button id="binder">Interactive tutorial notebook</button></a>
 
-<div id="spacer"></div><p id="fits-tables"><span class="inputnumrole">In[1]:</span></p>
+<div id="spacer"></div><div class="section" id="viewing-and-manipulating-data-from-fits-tables">
+<span id="fits-tables"></span><h1>Viewing and manipulating data from FITS tables<a class="headerlink" href="#viewing-and-manipulating-data-from-fits-tables" title="Permalink to this headline">¶</a></h1>
+<p>FITS files can often contain large amount of multi-dimensional data and
+tables.</p>
+<p>In this particular example, I will open a FITS file from a Chandra
+observation of the Galactic Center. The file contains a list of events
+with x and y coordinates, energy, and various other pieces of
+information.</p>
+<p><span class="inputnumrole">In[1]:</span></p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">astropy.io</span> <span class="k">import</span> <span class="n">fits</span>
 <span class="kn">from</span> <span class="nn">astropy.table</span> <span class="k">import</span> <span class="n">Table</span>
@@ -108,14 +116,6 @@ this tutorial.</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">astropy.utils.data</span> <span class="k">import</span> <span class="n">download_file</span>
 </pre></div>
 </div>
-<div class="section" id="viewing-and-manipulating-data-from-fits-tables">
-<h1>Viewing and manipulating data from FITS tables<a class="headerlink" href="#viewing-and-manipulating-data-from-fits-tables" title="Permalink to this headline">¶</a></h1>
-<p>FITS files can often contain large amount of multi-dimensional data and
-tables.</p>
-<p>In this particular example, I will open a FITS file from a Chandra
-observation of the Galactic Center. The file contains a list of events
-with x and y coordinates, energy, and various other pieces of
-information.</p>
 <p><span class="inputnumrole">In[3]:</span></p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">event_filename</span> <span class="o">=</span> <span class="n">download_file</span><span class="p">(</span><span class="s1">&#39;http://data.astropy.org/tutorials/FITS-tables/chandra_events.fits&#39;</span><span class="p">,</span>
                                <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
