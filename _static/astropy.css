@@ -202,6 +202,30 @@ span.highlighted {
   background-color: #fbe54e85;
 }
 
+
+/* Sidebar */
+#sidebar {
+  padding-top: 24px;
+  padding-bottom: 24px;
+  box-shadow: 3px 3px 8px 1px rgba(0, 0, 0, .4);
+}
+
+#sidebar h3 {
+  padding-left: 16px;
+}
+
+ul.nav.nav-list a {
+  font-weight: normal;
+}
+
+a.reference.internal.nav-header {
+  font-weight: bold;
+}
+
+.bs-sidenav.affix {
+  top: 10px;
+}
+
 /* Responsivness */
 @media only screen and (max-width: 850px) {
   #astropy-logo {
