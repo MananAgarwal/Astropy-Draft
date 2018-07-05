@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap_sandstone.css" type="text/css" />
     <link rel="stylesheet" href="_static/astropy.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
@@ -17,21 +17,28 @@
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <script type="text/javascript" src="_static/searchtools.js"></script>
     <script type="text/javascript" src="https://use.fontawesome.com/3168e95f94.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-<meta charset='utf-8'>
-<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
-<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
-<meta name="apple-mobile-web-app-capable" content="yes">
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <script type="text/javascript">
+    jQuery(function() { Search.loadIndex("searchindex.js"); });
+  </script>
+  
+  <script type="text/javascript" id="searchindexloader"></script>
+   
 
   </head><body>
 
 
 
 <nav class="navbar navbar-expand-lg bg-navbar">
-  <a class="navbar-brand" href="/">Learn.Astropy</a>
+  <a class="navbar-brand" href="/"style="padding: 0px 5px;"><img src="../_static/astropy_logo.png" style="height:38px;"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -78,13 +85,13 @@
 </li>
 </ul>
 
-    </div>    
+      </div>    
     </div>
     
 
-    <div class="col-md-9 content-padding card">
-      <div>  
-        
+    <div class="col-md-9">
+      <div class="content-padding card">
+        <div>
   <div class="section" id="documentation-on-tutorials-infrastructure">
 <span id="dev-page"></span><h1>Documentation on tutorials infrastructure<a class="headerlink" href="#documentation-on-tutorials-infrastructure" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
@@ -125,7 +132,7 @@ links to the source notebooks from the generated RST pages.</p>
 <p>You can use the custom nbconvert script in the astropy-tutorials repository to
 test that the tutorials all execute correctly. From the top-level repository
 path:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">scripts</span><span class="o">/</span><span class="n">convert</span><span class="o">.</span><span class="n">py</span> <span class="n">tutorials</span><span class="o">/</span><span class="n">notebooks</span> <span class="o">-</span><span class="n">v</span> <span class="o">--</span><span class="n">exec</span><span class="o">-</span><span class="n">only</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">python</span> <span class="n">scripts</span><span class="o">/</span><span class="n">convert</span><span class="o">.</span><span class="n">py</span> <span class="n">tutorials</span><span class="o">/</span><span class="n">notebooks</span> <span class="o">-</span><span class="n">v</span> <span class="o">--</span><span class="n">exec</span><span class="o">-</span><span class="n">only</span>
 </pre></div>
 </div>
 <p>Running the convert script with the flag <code class="docutils literal notranslate"><span class="pre">--exec-only</span></code> will just execute the
@@ -137,13 +144,13 @@ messages, which you may or may not want.</p>
 <p>The above command will execute all notebooks in any subdirectory of the
 <code class="docutils literal notranslate"><span class="pre">tutorials/notebooks</span></code> path. If you want to just execute a single notebook,
 you can specify the path to a single notebook file, e.g.:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">scripts</span><span class="o">/</span><span class="n">convert</span><span class="o">.</span><span class="n">py</span> <span class="n">tutorials</span><span class="o">/</span><span class="n">notebooks</span><span class="o">/</span><span class="n">coordinates</span><span class="o">/</span><span class="n">coordinates</span><span class="o">.</span><span class="n">ipynb</span> <span class="o">-</span><span class="n">v</span> <span class="o">--</span><span class="n">exec</span><span class="o">-</span><span class="n">only</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">python</span> <span class="n">scripts</span><span class="o">/</span><span class="n">convert</span><span class="o">.</span><span class="n">py</span> <span class="n">tutorials</span><span class="o">/</span><span class="n">notebooks</span><span class="o">/</span><span class="n">coordinates</span><span class="o">/</span><span class="n">coordinates</span><span class="o">.</span><span class="n">ipynb</span> <span class="o">-</span><span class="n">v</span> <span class="o">--</span><span class="n">exec</span><span class="o">-</span><span class="n">only</span>
 </pre></div>
 </div>
 <p>You can also do this when running and generating RST files, which can be useful
 when writing a new tutorial to make sure it renders in RST properly. To do
 this, just remove the <code class="docutils literal notranslate"><span class="pre">--exec-only</span></code> flag:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">scripts</span><span class="o">/</span><span class="n">convert</span><span class="o">.</span><span class="n">py</span> <span class="n">tutorials</span><span class="o">/</span><span class="n">notebooks</span><span class="o">/</span><span class="n">coordinates</span><span class="o">/</span><span class="n">coordinates</span><span class="o">.</span><span class="n">ipynb</span> <span class="o">-</span><span class="n">v</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">python</span> <span class="n">scripts</span><span class="o">/</span><span class="n">convert</span><span class="o">.</span><span class="n">py</span> <span class="n">tutorials</span><span class="o">/</span><span class="n">notebooks</span><span class="o">/</span><span class="n">coordinates</span><span class="o">/</span><span class="n">coordinates</span><span class="o">.</span><span class="n">ipynb</span> <span class="o">-</span><span class="n">v</span>
 </pre></div>
 </div>
 </div>
@@ -152,14 +159,14 @@ this, just remove the <code class="docutils literal notranslate"><span class="pr
 <p>For this, you can use the <a class="reference external" href="https://github.com/astropy/astropy-tutorials/blob/master/Makefile">Makefile</a> at the
 top-level of the tutorials repository. From the root level of the cloned or
 downloaded repository:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">html</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">make</span> <span class="n">html</span>
 </pre></div>
 </div>
 <p>Will execute and convert the Jupyter notebooks to RST files, then do the Sphinx
 build. If this returns an error, you may need to initialize the
 <code class="docutils literal notranslate"><span class="pre">astropy_helpers</span></code> submodule (read the error message). That is, you may need to
 do:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">submodule</span> <span class="n">init</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">git</span> <span class="n">submodule</span> <span class="n">init</span>
 <span class="n">git</span> <span class="n">submodule</span> <span class="n">update</span>
 <span class="n">make</span> <span class="n">html</span>
 </pre></div>
@@ -187,10 +194,9 @@ This tag is recognized by the latest (master) version of nbconvert.</p>
 </div>
 </div>
 
-
-
-        
+</div>
       </div>  
+      
     </div>
   </div>
 </div>
@@ -201,7 +207,7 @@ This tag is recognized by the latest (master) version of nbconvert.</p>
       
     </p>
     <p>
-    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
     &copy; Copyright Astropy.   
     </p>
   </div>

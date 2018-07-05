@@ -407,30 +407,31 @@ var Search = {
       this.deferQuery(query);
 
     //Perform search in Astropy Documentation
-      var docResponse = null;
-      var docResult = '';
-      $.get('https://readthedocs.org/api/v2/docsearch/?q=' + window.location.search.split('=')[1] + '&project=astropy&version=stable&language=en', function(response){
-        docResponse = response;
-        //limits the maximum results from the documentation to 15
-        docResultsCount = (docResponse.results.hits.total>15)? 15 : docResponse.results.hits.total ;
-        
-        for(var i = 0; i < docResultsCount; i++ ) {
-          docResult += '<li style="" class="result-card doc"> <a href="' + 
-                            docResponse.results.hits.hits[i].fields.link + '.html' +  
-                            '?highlight=' + window.location.search.split('=')[1] + '">' +
-                            docResponse.results.hits.hits[i].fields.title[0] + '</a>' +
-                            '<div class="context">' + 
-                            docResponse.results.hits.hits[i].highlight.content[0] +
-                            docResponse.results.hits.hits[i].highlight.content[1] +
-                            '</div> </li>';
-        }
-        if(i == docResultsCount)
-          {
-           var inject = document.getElementById('search-results-list');
-           inject.innerHTML += docResult;
+      if(window.location.search.search("filterTutorials")==-1){    //if filtered by tutorials, then no need to search in Astropy Documentation
+        var docResponse = null;
+        var docResult = '';
+        $.get('https://readthedocs.org/api/v2/docsearch/?q=' + window.location.search.split('=')[1] + '&project=astropy&version=stable&language=en', function(response){
+          docResponse = response;
+          //limits the maximum results from the documentation to 15
+          docResultsCount = (docResponse.results.hits.total>15)? 15 : docResponse.results.hits.total ;
+
+          for(var i = 0; i < docResultsCount; i++ ) {
+            docResult += '<li style="" class="result-card doc"> <a href="' + 
+                              docResponse.results.hits.hits[i].fields.link + '.html' +  
+                              '?highlight=' + window.location.search.split('=')[1] + '">' +
+                              docResponse.results.hits.hits[i].fields.title[0] + '</a>' +
+                              '<div class="context">' + 
+                              docResponse.results.hits.hits[i].highlight.content[0] +
+                              docResponse.results.hits.hits[i].highlight.content[1] +
+                              '</div> </li>';
           }
-      });
-  
+          if(i == docResultsCount)
+            {
+             var inject = document.getElementById('search-results-list');
+             inject.innerHTML += docResult;
+            }
+        });
+      }
   },
 
   /**

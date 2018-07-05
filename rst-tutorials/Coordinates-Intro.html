@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/bootstrap_sandstone.css" type="text/css" />
     <link rel="stylesheet" href="../_static/astropy.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
@@ -18,21 +18,28 @@
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <script type="text/javascript" src="../_static/searchtools.js"></script>
     <script type="text/javascript" src="https://use.fontawesome.com/3168e95f94.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-<meta charset='utf-8'>
-<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
-<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
-<meta name="apple-mobile-web-app-capable" content="yes">
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <script type="text/javascript">
+    jQuery(function() { Search.loadIndex("../searchindex.js"); });
+  </script>
+  
+  <script type="text/javascript" id="searchindexloader"></script>
+   
 
   </head><body>
 
 
 
 <nav class="navbar navbar-expand-lg bg-navbar">
-  <a class="navbar-brand" href="/">Learn.Astropy</a>
+  <a class="navbar-brand" href="/"style="padding: 0px 5px;"><img src="../_static/astropy_logo.png" style="height:38px;"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -81,13 +88,13 @@
 </li>
 </ul>
 
-    </div>    
+      </div>    
     </div>
     
 
-    <div class="col-md-9 content-padding card">
-      <div>  
-        
+    <div class="col-md-9">
+      <div class="content-padding card">
+        <div>
   <a href="../_static/Coordinates-Intro/Coordinates-Intro.ipynb"><button id="download">Download tutorial notebook</button></a>
 <a href="https://beta.mybinder.org/v2/gh/astropy/astropy-tutorials/master?filepath=/tutorials/notebooks/Coordinates-Intro/Coordinates-Intro.ipynb"><button id="binder">Interactive tutorial notebook</button></a>
 
@@ -116,7 +123,7 @@ download an image and do something with its coordinates.</p>
 <div class="section" id="imports">
 <h2>Imports<a class="headerlink" href="#imports" title="Permalink to this headline">¶</a></h2>
 <p><span class="inputnumrole">In[1]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Python standard-library</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="c1"># Python standard-library</span>
 <span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="k">import</span> <span class="n">urlencode</span>
 <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="k">import</span> <span class="n">urlretrieve</span>
 
@@ -147,33 +154,33 @@ J2000 position. This service can be used via the
 <code class="docutils literal notranslate"><span class="pre">SkyCoord.from_name()</span></code> <a class="reference external" href="https://julien.danjou.info/blog/2013/guide-python-static-class-abstract-methods">class
 method</a>:</p>
 <p><span class="inputnumrole">In[2]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># initialize a SkyCood object named hcg7_center at the location of HCG 7</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="c1"># initialize a SkyCood object named hcg7_center at the location of HCG 7</span>
 <span class="n">hcg7_center</span> <span class="o">=</span> <span class="n">SkyCoord</span><span class="o">.</span><span class="n">from_name</span><span class="p">(</span><span class="s1">&#39;HCG 7&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="alert alert-info"><p>Note that this requires an internet connection. If you don’t have one,
 execute this line instead:</p>
 </div><p><span class="inputnumrole">In[3]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># uncomment and run this line if you don&#39;t have an internet connection</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="c1"># uncomment and run this line if you don&#39;t have an internet connection</span>
 <span class="c1"># hcg7_center = SkyCoord(9.81625*u.deg, 0.88806*u.deg, frame=&#39;icrs&#39;)</span>
 </pre></div>
 </div>
 <p><span class="inputnumrole">In[4]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">hcg7_center</span><span class="p">)</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="nb">type</span><span class="p">(</span><span class="n">hcg7_center</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><span class="outputnumrole">Out[4]:</span></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">astropy</span><span class="o">.</span><span class="n">coordinates</span><span class="o">.</span><span class="n">sky_coordinate</span><span class="o">.</span><span class="n">SkyCoord</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">astropy</span><span class="o">.</span><span class="n">coordinates</span><span class="o">.</span><span class="n">sky_coordinate</span><span class="o">.</span><span class="n">SkyCoord</span>
 </pre></div>
 </div>
 <p>Show the available methods and attributes of the SkyCoord object we’ve
 created called <code class="docutils literal notranslate"><span class="pre">hcg7_center</span></code></p>
 <p><span class="inputnumrole">In[5]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">dir</span><span class="p">(</span><span class="n">hcg7_center</span><span class="p">)</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="nb">dir</span><span class="p">(</span><span class="n">hcg7_center</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><span class="outputnumrole">Out[5]:</span></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">,</span>
  <span class="s1">&#39;__abstractmethods__&#39;</span><span class="p">,</span>
  <span class="s1">&#39;__bool__&#39;</span><span class="p">,</span>
  <span class="s1">&#39;__class__&#39;</span><span class="p">,</span>
@@ -321,12 +328,12 @@ created called <code class="docutils literal notranslate"><span class="pre">hcg7
 </div>
 <p>Show the RA and Dec.</p>
 <p><span class="inputnumrole">In[6]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">hcg7_center</span><span class="o">.</span><span class="n">ra</span><span class="p">,</span> <span class="n">hcg7_center</span><span class="o">.</span><span class="n">dec</span><span class="p">)</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="nb">print</span><span class="p">(</span><span class="n">hcg7_center</span><span class="o">.</span><span class="n">ra</span><span class="p">,</span> <span class="n">hcg7_center</span><span class="o">.</span><span class="n">dec</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">hcg7_center</span><span class="o">.</span><span class="n">ra</span><span class="o">.</span><span class="n">hour</span><span class="p">,</span> <span class="n">hcg7_center</span><span class="o">.</span><span class="n">dec</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><span class="outputnumrole">Out[6]:</span></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">9</span><span class="n">d48m58</span><span class="o">.</span><span class="mi">5</span><span class="n">s</span> <span class="mi">0</span><span class="n">d53m17</span><span class="o">.</span><span class="mi">016</span><span class="n">s</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="mi">9</span><span class="n">d48m58</span><span class="o">.</span><span class="mi">5</span><span class="n">s</span> <span class="mi">0</span><span class="n">d53m17</span><span class="o">.</span><span class="mi">016</span><span class="n">s</span>
 <span class="mf">0.6544166666666668</span> <span class="mi">0</span><span class="n">d53m17</span><span class="o">.</span><span class="mi">016</span><span class="n">s</span>
 </pre></div>
 </div>
@@ -346,56 +353,56 @@ These objects store angles and provide pretty representations of those
 angles, as well as some useful attributes to quickly convert to common
 angle units:</p>
 <p><span class="inputnumrole">In[7]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">hcg7_center</span><span class="o">.</span><span class="n">ra</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="n">hcg7_center</span><span class="o">.</span><span class="n">dec</span><span class="p">)</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="nb">type</span><span class="p">(</span><span class="n">hcg7_center</span><span class="o">.</span><span class="n">ra</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="n">hcg7_center</span><span class="o">.</span><span class="n">dec</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><span class="outputnumrole">Out[7]:</span></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">astropy</span><span class="o">.</span><span class="n">coordinates</span><span class="o">.</span><span class="n">angles</span><span class="o">.</span><span class="n">Longitude</span><span class="p">,</span> <span class="n">astropy</span><span class="o">.</span><span class="n">coordinates</span><span class="o">.</span><span class="n">angles</span><span class="o">.</span><span class="n">Latitude</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="p">(</span><span class="n">astropy</span><span class="o">.</span><span class="n">coordinates</span><span class="o">.</span><span class="n">angles</span><span class="o">.</span><span class="n">Longitude</span><span class="p">,</span> <span class="n">astropy</span><span class="o">.</span><span class="n">coordinates</span><span class="o">.</span><span class="n">angles</span><span class="o">.</span><span class="n">Latitude</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><span class="inputnumrole">In[8]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hcg7_center</span><span class="o">.</span><span class="n">ra</span><span class="p">,</span> <span class="n">hcg7_center</span><span class="o">.</span><span class="n">dec</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="n">hcg7_center</span><span class="o">.</span><span class="n">ra</span><span class="p">,</span> <span class="n">hcg7_center</span><span class="o">.</span><span class="n">dec</span>
 </pre></div>
 </div>
 <p><span class="outputnumrole">Out[8]:</span></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="o">&lt;</span><span class="n">Longitude</span> <span class="mf">9.81625</span> <span class="n">deg</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">Latitude</span> <span class="mf">0.88806</span> <span class="n">deg</span><span class="o">&gt;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="p">(</span><span class="o">&lt;</span><span class="n">Longitude</span> <span class="mf">9.81625</span> <span class="n">deg</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">Latitude</span> <span class="mf">0.88806</span> <span class="n">deg</span><span class="o">&gt;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><span class="inputnumrole">In[9]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hcg7_center</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="n">hcg7_center</span>
 </pre></div>
 </div>
 <p><span class="outputnumrole">Out[9]:</span></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">SkyCoord</span> <span class="p">(</span><span class="n">ICRS</span><span class="p">):</span> <span class="p">(</span><span class="n">ra</span><span class="p">,</span> <span class="n">dec</span><span class="p">)</span> <span class="ow">in</span> <span class="n">deg</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="o">&lt;</span><span class="n">SkyCoord</span> <span class="p">(</span><span class="n">ICRS</span><span class="p">):</span> <span class="p">(</span><span class="n">ra</span><span class="p">,</span> <span class="n">dec</span><span class="p">)</span> <span class="ow">in</span> <span class="n">deg</span>
     <span class="p">(</span><span class="mf">9.81625</span><span class="p">,</span> <span class="mf">0.88806</span><span class="p">)</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p><span class="inputnumrole">In[10]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hcg7_center</span><span class="o">.</span><span class="n">ra</span><span class="o">.</span><span class="n">hour</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="n">hcg7_center</span><span class="o">.</span><span class="n">ra</span><span class="o">.</span><span class="n">hour</span>
 </pre></div>
 </div>
 <p><span class="outputnumrole">Out[10]:</span></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">0.6544166666666668</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="mf">0.6544166666666668</span>
 </pre></div>
 </div>
 <p>SkyCoord will also accept string-formatted coordinates either as
 separate strings for ra/dec or a single string. You’ll have to give
 units, though, if they aren’t part of the string itself.</p>
 <p><span class="inputnumrole">In[11]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SkyCoord</span><span class="p">(</span><span class="s1">&#39;0h39m15.9s&#39;</span><span class="p">,</span> <span class="s1">&#39;0d53m17.016s&#39;</span><span class="p">,</span> <span class="n">frame</span><span class="o">=</span><span class="s1">&#39;icrs&#39;</span><span class="p">)</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="n">SkyCoord</span><span class="p">(</span><span class="s1">&#39;0h39m15.9s&#39;</span><span class="p">,</span> <span class="s1">&#39;0d53m17.016s&#39;</span><span class="p">,</span> <span class="n">frame</span><span class="o">=</span><span class="s1">&#39;icrs&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><span class="outputnumrole">Out[11]:</span></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">SkyCoord</span> <span class="p">(</span><span class="n">ICRS</span><span class="p">):</span> <span class="p">(</span><span class="n">ra</span><span class="p">,</span> <span class="n">dec</span><span class="p">)</span> <span class="ow">in</span> <span class="n">deg</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="o">&lt;</span><span class="n">SkyCoord</span> <span class="p">(</span><span class="n">ICRS</span><span class="p">):</span> <span class="p">(</span><span class="n">ra</span><span class="p">,</span> <span class="n">dec</span><span class="p">)</span> <span class="ow">in</span> <span class="n">deg</span>
     <span class="p">(</span><span class="mf">9.81625</span><span class="p">,</span> <span class="mf">0.88806</span><span class="p">)</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p><span class="inputnumrole">In[12]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hcg7_center</span><span class="o">.</span><span class="n">ra</span><span class="o">.</span><span class="n">hour</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="n">hcg7_center</span><span class="o">.</span><span class="n">ra</span><span class="o">.</span><span class="n">hour</span>
 </pre></div>
 </div>
 <p><span class="outputnumrole">Out[12]:</span></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">0.6544166666666668</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="mf">0.6544166666666668</span>
 </pre></div>
 </div>
 </div>
@@ -410,7 +417,7 @@ image quality.</p>
 file is included in the repository so you can just let it use the local
 file<code class="docutils literal notranslate"><span class="pre">'HCG7_SDSS_cutout.jpg'</span></code>, defined at the top of the cell.</p>
 <p><span class="inputnumrole">In[13]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># tell the SDSS service how big of a cutout we want</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="c1"># tell the SDSS service how big of a cutout we want</span>
 <span class="n">im_size</span> <span class="o">=</span> <span class="mi">12</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">arcmin</span> <span class="c1"># get a 12 arcmin square</span>
 <span class="n">im_pixels</span> <span class="o">=</span> <span class="mi">1024</span>
 <span class="n">cutoutbaseurl</span> <span class="o">=</span> <span class="s1">&#39;http://skyservice.pha.jhu.edu/DR12/ImgCutout/getjpeg.aspx&#39;</span>
@@ -425,11 +432,11 @@ file<code class="docutils literal notranslate"><span class="pre">'HCG7_SDSS_cuto
 </pre></div>
 </div>
 <p><span class="outputnumrole">Out[13]:</span></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="s1">&#39;HCG7_SDSS_cutout.jpg&#39;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">http</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">HTTPMessage</span> <span class="n">at</span> <span class="mh">0x7f68d6a53828</span><span class="o">&gt;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="p">(</span><span class="s1">&#39;HCG7_SDSS_cutout.jpg&#39;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">http</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">HTTPMessage</span> <span class="n">at</span> <span class="mh">0x7f68d6a53828</span><span class="o">&gt;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><span class="inputnumrole">In[14]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s1">&#39;HCG7_SDSS_cutout.jpg&#39;</span><span class="p">)</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="n">Image</span><span class="p">(</span><span class="s1">&#39;HCG7_SDSS_cutout.jpg&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><span class="outputnumrole">Out[14]:</span></p>
@@ -459,10 +466,9 @@ web URL is
 </div>
 </div>
 
-
-
-        
+</div>
       </div>  
+      
     </div>
   </div>
 </div>
@@ -473,7 +479,7 @@ web URL is
       
     </p>
     <p>
-    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
     &copy; Copyright Astropy.   
     </p>
   </div>

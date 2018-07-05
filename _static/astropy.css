@@ -3,6 +3,18 @@ body{
   background-color: #fafafa;
 }
 
+h1{
+  font-size: 1.8rem;
+}
+
+h2{
+  font-size: 1.6rem;
+}
+
+h3{
+  font-size: 1.5rem;
+}
+
 a{
   text-decoration: none !important;
   font-weight: bold;
@@ -19,7 +31,7 @@ a :hover{
 }
 
 .card-body h2 {
-  color: #fff !important;
+  color: #ffffff !important;
   font-weight: 600;  
 }
 
@@ -114,9 +126,17 @@ a :hover{
 }
 
 #search-results ul{
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tut-results {
+  padding-top: 25px;
+}
+
+.tut-results h2, .tut-results p {
+  display: none !important;
 }
 
 .result-card {
@@ -125,6 +145,7 @@ a :hover{
   margin-bottom: 20px;
   padding: 10px !important;
   background-image: none !important;
+  background-color: #ffffff;
 }
 
 .result-card:hover {
@@ -165,7 +186,7 @@ a :hover{
   font-size: 0.875rem;
   line-height: 1.5;
   border-radius: 0.25rem;
-  color: #fff;
+  color: #ffffff;
   background-color: #d9534f;
   border-color: #d9534f;
   -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
@@ -174,9 +195,9 @@ a :hover{
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
 }
 
-.card #download:hover, .card #download:focus {
+.card #download:hover, .card #download:focus, .card #binder:hover, .card #binder:focus {
   text-decoration: none;
-  color: #fff;
+  color: #ffffff;
   background-color: #d23430;
   border-color: #c9302c;
 }
@@ -225,6 +246,11 @@ a.reference.internal.nav-header {
 .bs-sidenav.affix {
   top: 10px;
 }
+
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+  background-color: #fa743b;
+}
+
 
 /* Responsivness */
 @media only screen and (max-width: 850px) {

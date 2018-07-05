@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/bootstrap_sandstone.css" type="text/css" />
     <link rel="stylesheet" href="../_static/astropy.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
@@ -18,21 +18,28 @@
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <script type="text/javascript" src="../_static/searchtools.js"></script>
     <script type="text/javascript" src="https://use.fontawesome.com/3168e95f94.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-<meta charset='utf-8'>
-<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
-<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
-<meta name="apple-mobile-web-app-capable" content="yes">
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <script type="text/javascript">
+    jQuery(function() { Search.loadIndex("../searchindex.js"); });
+  </script>
+  
+  <script type="text/javascript" id="searchindexloader"></script>
+   
 
   </head><body>
 
 
 
 <nav class="navbar navbar-expand-lg bg-navbar">
-  <a class="navbar-brand" href="/">Learn.Astropy</a>
+  <a class="navbar-brand" href="/"style="padding: 0px 5px;"><img src="../_static/astropy_logo.png" style="height:38px;"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -93,13 +100,13 @@
 </li>
 </ul>
 
-    </div>    
+      </div>    
     </div>
     
 
-    <div class="col-md-9 content-padding card">
-      <div>  
-        
+    <div class="col-md-9">
+      <div class="content-padding card">
+        <div>
   <a href="../_static/units-and-integration/units-and-integration.ipynb"><button id="download">Download tutorial notebook</button></a>
 <a href="https://beta.mybinder.org/v2/gh/astropy/astropy-tutorials/master?filepath=/tutorials/notebooks/units-and-integration/units-and-integration.ipynb"><button id="binder">Interactive tutorial notebook</button></a>
 
@@ -169,11 +176,11 @@ quantities, see the <a class="reference external" href="http://docs.astropy.org/
 Started</a>
 section of the astropy.units documentation pages.</p>
 </div><p><span class="inputnumrole">In[2]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">3000.</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">THz</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="n">nu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">3000.</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">THz</span>
 <span class="n">bb5000K_nu</span> <span class="o">=</span> <span class="n">blackbody_nu</span><span class="p">(</span><span class="n">in_x</span><span class="o">=</span><span class="n">nu</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mf">5000.</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">Kelvin</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">nu</span><span class="p">,</span> <span class="n">bb5000K_nu</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\nu$, [{0:latex_inline}]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">nu</span><span class="o">.</span><span class="n">unit</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$I_{\nu}$, &#39;</span> <span class="o">+</span> <span class="s1">&#39;[{0:latex_inline}]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">bb5000K_nu</span><span class="o">.</span><span class="n">unit</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">r&#39;$\nu$, [{0:latex_inline}]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">nu</span><span class="o">.</span><span class="n">unit</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">r&#39;$I_{\nu}$, &#39;</span> <span class="o">+</span> <span class="s1">&#39;[{0:latex_inline}]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">bb5000K_nu</span><span class="o">.</span><span class="n">unit</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Planck function in frequency&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -188,7 +195,7 @@ a string <code class="docutils literal notranslate"><span class="pre">r'\$</span
 the string is “raw,” and backslashes are treated literally. This is the
 suggested format for axis label text that includes markup.</p>
 <p><span class="inputnumrole">In[3]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">nu</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">bb5000K_nu</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;erg s-1 cm-2 sr-1&#39;</span><span class="p">)</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">nu</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">bb5000K_nu</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;erg s-1 cm-2 sr-1&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><span class="outputnumrole">Out[3]:</span></p>
@@ -198,13 +205,13 @@ did earlier. We can transform the maximum frequency into the
 corresponding (minimum) wavelength by using the <code class="docutils literal notranslate"><span class="pre">.to()</span></code> method, with
 the addition of an <em>equivalency</em>.</p>
 <p><span class="inputnumrole">In[4]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lam</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">nu</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">AA</span><span class="p">,</span> <span class="n">equivalencies</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">spectral</span><span class="p">()),</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="n">lam</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">nu</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">AA</span><span class="p">,</span> <span class="n">equivalencies</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">spectral</span><span class="p">()),</span>
                   <span class="n">nu</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">AA</span><span class="p">,</span> <span class="n">equivalencies</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">spectral</span><span class="p">()),</span> <span class="mi">1000</span><span class="p">)</span>
 <span class="n">bb5000K_lam</span> <span class="o">=</span> <span class="n">blackbody_lambda</span><span class="p">(</span><span class="n">in_x</span><span class="o">=</span><span class="n">lam</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mf">5000.</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">Kelvin</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lam</span><span class="p">,</span> <span class="n">bb5000K_lam</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mf">1.0e3</span><span class="p">,</span> <span class="mf">5.0e4</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\lambda$, [{0:latex_inline}]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">lam</span><span class="o">.</span><span class="n">unit</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$I_{\lambda}$, &#39;</span> <span class="o">+</span> <span class="s1">&#39;[{0:latex_inline}]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">bb5000K_lam</span><span class="o">.</span><span class="n">unit</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">r&#39;$\lambda$, [{0:latex_inline}]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">lam</span><span class="o">.</span><span class="n">unit</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">r&#39;$I_{\lambda}$, &#39;</span> <span class="o">+</span> <span class="s1">&#39;[{0:latex_inline}]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">bb5000K_lam</span><span class="o">.</span><span class="n">unit</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Planck function in wavelength&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -212,7 +219,7 @@ the addition of an <em>equivalency</em>.</p>
 <p><span class="outputnumrole">Out[4]:</span></p>
 <img alt="../_images/units-and-integration_10_0.png" src="../_images/units-and-integration_10_0.png" />
 <p><span class="inputnumrole">In[5]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">lam</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">bb5000K_lam</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;erg s-1 cm-2 sr-1&#39;</span><span class="p">)</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">lam</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">bb5000K_lam</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;erg s-1 cm-2 sr-1&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><span class="outputnumrole">Out[5]:</span></p>
@@ -244,7 +251,7 @@ function. In other words, if you count the stars that have been born
 recently from a cloud of gas, their distribution of masses will follow
 the IMF. Let’s write a little class to help us keep track of that…</p>
 <p><span class="inputnumrole">In[6]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">PowerLawPDF</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="k">class</span> <span class="nc">PowerLawPDF</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">B</span><span class="o">=</span><span class="mf">1.</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">gamma</span> <span class="o">=</span> <span class="n">gamma</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">B</span> <span class="o">=</span> <span class="n">B</span>
@@ -286,12 +293,12 @@ at the original proposal, <a class="reference external" href="https://www.python
 448</a>, which was accepted
 in 2015.</p>
 <p><span class="inputnumrole">In[7]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">salpeter</span> <span class="o">=</span> <span class="n">PowerLawPDF</span><span class="p">(</span><span class="n">gamma</span><span class="o">=-</span><span class="mf">2.35</span><span class="p">)</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="n">salpeter</span> <span class="o">=</span> <span class="n">PowerLawPDF</span><span class="p">(</span><span class="n">gamma</span><span class="o">=-</span><span class="mf">2.35</span><span class="p">)</span>
 <span class="n">salpeter</span><span class="o">.</span><span class="n">B</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">integrate</span><span class="o">.</span><span class="n">quad</span><span class="p">(</span><span class="n">salpeter</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mf">100.</span><span class="p">)</span>
 
 <span class="n">m_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">m_grid</span><span class="p">,</span> <span class="n">salpeter</span><span class="p">(</span><span class="n">m_grid</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Stellar mass [$M_{\odot}$]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">r&#39;Stellar mass [$M_{\odot}$]&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Probability density&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -304,13 +311,13 @@ in 2015.</p>
 created by the IMF, to the number of O stars (mass more than 15 times
 solar).</p>
 <p><span class="inputnumrole">In[8]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">n_m</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">integrate</span><span class="o">.</span><span class="n">quad</span><span class="p">(</span><span class="n">salpeter</span><span class="p">,</span> <span class="n">a</span><span class="o">=.</span><span class="mi">01</span><span class="p">,</span> <span class="n">b</span><span class="o">=.</span><span class="mi">6</span><span class="p">)</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="n">n_m</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">integrate</span><span class="o">.</span><span class="n">quad</span><span class="p">(</span><span class="n">salpeter</span><span class="p">,</span> <span class="n">a</span><span class="o">=.</span><span class="mi">01</span><span class="p">,</span> <span class="n">b</span><span class="o">=.</span><span class="mi">6</span><span class="p">)</span>
 <span class="n">n_o</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">integrate</span><span class="o">.</span><span class="n">quad</span><span class="p">(</span><span class="n">salpeter</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mf">15.</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mf">100.</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">n_m</span> <span class="o">/</span> <span class="n">n_o</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><span class="outputnumrole">Out[8]:</span></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">20936.017868337385</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="mf">20936.017868337385</span>
 </pre></div>
 </div>
 <p>There are almost 21000 as many low-mass stars born as there are
@@ -331,7 +338,7 @@ the tuple <code class="docutils literal notranslate"><span class="pre">args</spa
 by mass. More generally, you find the value of some property
  that depends on  by calculating</p>
 <p><span class="inputnumrole">In[9]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">IMF_m</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">imf</span><span class="p">):</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="k">def</span> <span class="nf">IMF_m</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">imf</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">imf</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="o">*</span> <span class="n">m</span>
 
 <span class="n">m_m</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">integrate</span><span class="o">.</span><span class="n">quad</span><span class="p">(</span><span class="n">IMF_m</span><span class="p">,</span> <span class="n">a</span><span class="o">=.</span><span class="mi">01</span><span class="p">,</span> <span class="n">b</span><span class="o">=.</span><span class="mi">6</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">salpeter</span><span class="p">,</span> <span class="p">))</span>
@@ -341,7 +348,7 @@ by mass. More generally, you find the value of some property
 </pre></div>
 </div>
 <p><span class="outputnumrole">Out[9]:</span></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">20.29197629920483</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="mf">20.29197629920483</span>
 </pre></div>
 </div>
 <p>So about 20 times as much mass is tied up in M stars as in O stars.</p>
@@ -392,10 +399,9 @@ class that implements a broken-power-law (Kroupa) or log-parabola
 <a href="https://beta.mybinder.org/v2/gh/astropy/astropy-tutorials/master?filepath=/tutorials/notebooks//.ipynb"><button id="binder">Interactive tutorial notebook</button></a></div>
 </div>
 
-
-
-        
+</div>
       </div>  
+      
     </div>
   </div>
 </div>
@@ -406,7 +412,7 @@ class that implements a broken-power-law (Kroupa) or log-parabola
       
     </p>
     <p>
-    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
     &copy; Copyright Astropy.   
     </p>
   </div>

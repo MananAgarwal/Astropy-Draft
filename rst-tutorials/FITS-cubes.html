@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/bootstrap_sandstone.css" type="text/css" />
     <link rel="stylesheet" href="../_static/astropy.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
@@ -18,21 +18,28 @@
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <script type="text/javascript" src="../_static/searchtools.js"></script>
     <script type="text/javascript" src="https://use.fontawesome.com/3168e95f94.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-<meta charset='utf-8'>
-<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
-<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
-<meta name="apple-mobile-web-app-capable" content="yes">
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <script type="text/javascript">
+    jQuery(function() { Search.loadIndex("../searchindex.js"); });
+  </script>
+  
+  <script type="text/javascript" id="searchindexloader"></script>
+   
 
   </head><body>
 
 
 
 <nav class="navbar navbar-expand-lg bg-navbar">
-  <a class="navbar-brand" href="/">Learn.Astropy</a>
+  <a class="navbar-brand" href="/"style="padding: 0px 5px;"><img src="../_static/astropy_logo.png" style="height:38px;"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -95,13 +102,13 @@
 </li>
 </ul>
 
-    </div>    
+      </div>    
     </div>
     
 
-    <div class="col-md-9 content-padding card">
-      <div>  
-        
+    <div class="col-md-9">
+      <div class="content-padding card">
+        <div>
   <a href="../_static/FITS-cubes/FITS-cubes.ipynb"><button id="download">Download tutorial notebook</button></a>
 <a href="https://beta.mybinder.org/v2/gh/astropy/astropy-tutorials/master?filepath=/tutorials/notebooks/FITS-cubes/FITS-cubes.ipynb"><button id="binder">Interactive tutorial notebook</button></a>
 
@@ -150,7 +157,7 @@ images in a multitude of ways.</p>
 <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-c</span> <span class="pre">astropy</span> <span class="pre">aplpy</span></code></p>
 <p>Alternatively, if you don’t use conda, you can use pip.</p>
 <p><span class="inputnumrole">In[1]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="k">import</span> <span class="n">LogNorm</span>
 
@@ -190,14 +197,14 @@ cache!</p>
 <div class="section" id="download-the-hi-fits-cube">
 <h2>Download the HI Fits Cube<a class="headerlink" href="#download-the-hi-fits-cube" title="Permalink to this headline">¶</a></h2>
 <p><span class="inputnumrole">In[2]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#Downloads the HI data in a fits file format</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="c1">#Downloads the HI data in a fits file format</span>
 <span class="n">hi_datafile</span> <span class="o">=</span> <span class="n">download_file</span><span class="p">(</span>
     <span class="s1">&#39;http://cdsarc.u-strasbg.fr/vizier/ftp/cats/J/A+A/594/A116/CUBES/GAL/TAN/TAN_C14.fits&#39;</span><span class="p">,</span>
     <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">show_progress</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><span class="outputnumrole">Out[2]:</span></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Downloading</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">cdsarc</span><span class="o">.</span><span class="n">u</span><span class="o">-</span><span class="n">strasbg</span><span class="o">.</span><span class="n">fr</span><span class="o">/</span><span class="n">vizier</span><span class="o">/</span><span class="n">ftp</span><span class="o">/</span><span class="n">cats</span><span class="o">/</span><span class="n">J</span><span class="o">/</span><span class="n">A</span><span class="o">+</span><span class="n">A</span><span class="o">/</span><span class="mi">594</span><span class="o">/</span><span class="n">A116</span><span class="o">/</span><span class="n">CUBES</span><span class="o">/</span><span class="n">GAL</span><span class="o">/</span><span class="n">TAN</span><span class="o">/</span><span class="n">TAN_C14</span><span class="o">.</span><span class="n">fits</span> <span class="p">[</span><span class="n">Done</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">Downloading</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">cdsarc</span><span class="o">.</span><span class="n">u</span><span class="o">-</span><span class="n">strasbg</span><span class="o">.</span><span class="n">fr</span><span class="o">/</span><span class="n">vizier</span><span class="o">/</span><span class="n">ftp</span><span class="o">/</span><span class="n">cats</span><span class="o">/</span><span class="n">J</span><span class="o">/</span><span class="n">A</span><span class="o">+</span><span class="n">A</span><span class="o">/</span><span class="mi">594</span><span class="o">/</span><span class="n">A116</span><span class="o">/</span><span class="n">CUBES</span><span class="o">/</span><span class="n">GAL</span><span class="o">/</span><span class="n">TAN</span><span class="o">/</span><span class="n">TAN_C14</span><span class="o">.</span><span class="n">fits</span> <span class="p">[</span><span class="n">Done</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>Awesome, so now we have a copy of the data file (a FITS file). So how do
@@ -211,7 +218,7 @@ and read in the data as a SpectralCube!</p>
 the data cube form the fits file without the special formating form
 SpectralCube</p>
 <p><span class="inputnumrole">In[3]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hi_data</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">hi_datafile</span><span class="p">)</span> <span class="c1"># Open the FITS file for reading</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="n">hi_data</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">hi_datafile</span><span class="p">)</span> <span class="c1"># Open the FITS file for reading</span>
 <span class="n">cube</span> <span class="o">=</span> <span class="n">SpectralCube</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">hi_data</span><span class="p">)</span> <span class="c1"># Initiate a SpectralCube</span>
 <span class="n">hi_data</span><span class="o">.</span><span class="n">close</span><span class="p">()</span> <span class="c1"># Close the FITS file - we already read it in and don&#39;t need it anymore!</span>
 </pre></div>
@@ -223,11 +230,11 @@ SpectralCube like this:</p>
 </div><p>So what does this SpectralCube object actually look like? Let’s find
 out! The first check is to just print out the cube.</p>
 <p><span class="inputnumrole">In[4]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">cube</span><span class="p">)</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="nb">print</span><span class="p">(</span><span class="n">cube</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><span class="outputnumrole">Out[4]:</span></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SpectralCube</span> <span class="k">with</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">933</span><span class="p">,</span> <span class="mi">277</span><span class="p">,</span> <span class="mi">269</span><span class="p">)</span> <span class="ow">and</span> <span class="n">unit</span><span class="o">=</span><span class="n">K</span><span class="p">:</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">SpectralCube</span> <span class="k">with</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">933</span><span class="p">,</span> <span class="mi">277</span><span class="p">,</span> <span class="mi">269</span><span class="p">)</span> <span class="ow">and</span> <span class="n">unit</span><span class="o">=</span><span class="n">K</span><span class="p">:</span>
  <span class="n">n_x</span><span class="p">:</span>    <span class="mi">269</span>  <span class="n">type_x</span><span class="p">:</span> <span class="n">GLON</span><span class="o">-</span><span class="n">TAN</span>  <span class="n">unit_x</span><span class="p">:</span> <span class="n">deg</span>    <span class="nb">range</span><span class="p">:</span>   <span class="mf">286.707162</span> <span class="n">deg</span><span class="p">:</span>  <span class="mf">320.913024</span> <span class="n">deg</span>
  <span class="n">n_y</span><span class="p">:</span>    <span class="mi">277</span>  <span class="n">type_y</span><span class="p">:</span> <span class="n">GLAT</span><span class="o">-</span><span class="n">TAN</span>  <span class="n">unit_y</span><span class="p">:</span> <span class="n">deg</span>    <span class="nb">range</span><span class="p">:</span>   <span class="o">-</span><span class="mf">51.659734</span> <span class="n">deg</span><span class="p">:</span>  <span class="o">-</span><span class="mf">28.394756</span> <span class="n">deg</span>
  <span class="n">n_s</span><span class="p">:</span>    <span class="mi">933</span>  <span class="n">type_s</span><span class="p">:</span> <span class="n">VRAD</span>      <span class="n">unit_s</span><span class="p">:</span> <span class="n">m</span> <span class="o">/</span> <span class="n">s</span>  <span class="nb">range</span><span class="p">:</span>  <span class="o">-</span><span class="mf">600207.218</span> <span class="n">m</span> <span class="o">/</span> <span class="n">s</span><span class="p">:</span>  <span class="mf">600409.133</span> <span class="n">m</span> <span class="o">/</span> <span class="n">s</span>
@@ -258,17 +265,17 @@ sure the data isn’t corrupted or is looking at the right region.</p>
 <p>To do this, we simply have to index our cube along one axis (for a
 slice) or two axes (for a spectrum):</p>
 <p><span class="inputnumrole">In[5]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cube</span><span class="p">[</span><span class="mi">600</span><span class="p">,:,:]</span><span class="o">.</span><span class="n">quicklook</span><span class="p">()</span> <span class="c1"># Slice the cube along the spectral axis, and display a quick image</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="n">cube</span><span class="p">[</span><span class="mi">600</span><span class="p">,:,:]</span><span class="o">.</span><span class="n">quicklook</span><span class="p">()</span> <span class="c1"># Slice the cube along the spectral axis, and display a quick image</span>
 </pre></div>
 </div>
 <p><span class="outputnumrole">Out[5]:</span></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INFO</span><span class="p">:</span> <span class="n">Auto</span><span class="o">-</span><span class="n">setting</span> <span class="n">vmin</span> <span class="n">to</span> <span class="o">-</span><span class="mf">4.660e+00</span> <span class="p">[</span><span class="n">aplpy</span><span class="o">.</span><span class="n">core</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">INFO</span><span class="p">:</span> <span class="n">Auto</span><span class="o">-</span><span class="n">setting</span> <span class="n">vmin</span> <span class="n">to</span> <span class="o">-</span><span class="mf">4.660e+00</span> <span class="p">[</span><span class="n">aplpy</span><span class="o">.</span><span class="n">core</span><span class="p">]</span>
 <span class="n">INFO</span><span class="p">:</span> <span class="n">Auto</span><span class="o">-</span><span class="n">setting</span> <span class="n">vmax</span> <span class="n">to</span>  <span class="mf">5.058e+01</span> <span class="p">[</span><span class="n">aplpy</span><span class="o">.</span><span class="n">core</span><span class="p">]</span>
 </pre></div>
 </div>
 <img alt="../_images/FITS-cubes_10_1.png" src="../_images/FITS-cubes_10_1.png" />
 <p><span class="inputnumrole">In[6]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cube</span><span class="p">[:,</span><span class="mi">150</span><span class="p">,</span><span class="mi">150</span><span class="p">]</span><span class="o">.</span><span class="n">quicklook</span><span class="p">()</span> <span class="c1"># Extract a single spectrum through the data cube</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="n">cube</span><span class="p">[:,</span><span class="mi">150</span><span class="p">,</span><span class="mi">150</span><span class="p">]</span><span class="o">.</span><span class="n">quicklook</span><span class="p">()</span> <span class="c1"># Extract a single spectrum through the data cube</span>
 </pre></div>
 </div>
 <p><span class="outputnumrole">Out[6]:</span></p>
@@ -293,13 +300,13 @@ along a single dimension.</p>
 </div><p>The output of .world is an astropy Quanity which includes units. Extract
 these astropy Quantity objects by slicing the data.</p>
 <p><span class="inputnumrole">In[7]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">_</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">cube</span><span class="o">.</span><span class="n">world</span><span class="p">[</span><span class="mi">0</span><span class="p">,:,</span><span class="mi">0</span><span class="p">]</span> <span class="c1">#extract latitude world coordinates from cube</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="n">_</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">cube</span><span class="o">.</span><span class="n">world</span><span class="p">[</span><span class="mi">0</span><span class="p">,:,</span><span class="mi">0</span><span class="p">]</span> <span class="c1">#extract latitude world coordinates from cube</span>
 <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">l</span> <span class="o">=</span> <span class="n">cube</span><span class="o">.</span><span class="n">world</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,:]</span> <span class="c1">#extract longitude world coordinates from cube</span>
 </pre></div>
 </div>
 <p>Now find the proper indices to cut our data along to extract a sub_cube</p>
 <p><span class="inputnumrole">In[8]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">find_nearest_idx</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">target_value</span><span class="p">):</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="k">def</span> <span class="nf">find_nearest_idx</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">target_value</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;Simple function to find the index closest to a target value&#39;&#39;&#39;</span>
     <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanargmin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">array</span><span class="o">-</span><span class="n">target_value</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">idx</span>
@@ -320,7 +327,7 @@ these astropy Quantity objects by slicing the data.</p>
 </pre></div>
 </div>
 <p><span class="outputnumrole">Out[8]:</span></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SpectralCube</span> <span class="k">with</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">933</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">85</span><span class="p">)</span> <span class="ow">and</span> <span class="n">unit</span><span class="o">=</span><span class="n">K</span><span class="p">:</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">SpectralCube</span> <span class="k">with</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">933</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">85</span><span class="p">)</span> <span class="ow">and</span> <span class="n">unit</span><span class="o">=</span><span class="n">K</span><span class="p">:</span>
  <span class="n">n_x</span><span class="p">:</span>     <span class="mi">85</span>  <span class="n">type_x</span><span class="p">:</span> <span class="n">GLON</span><span class="o">-</span><span class="n">TAN</span>  <span class="n">unit_x</span><span class="p">:</span> <span class="n">deg</span>    <span class="nb">range</span><span class="p">:</span>   <span class="mf">295.721832</span> <span class="n">deg</span><span class="p">:</span>  <span class="mf">305.875635</span> <span class="n">deg</span>
  <span class="n">n_y</span><span class="p">:</span>     <span class="mi">75</span>  <span class="n">type_y</span><span class="p">:</span> <span class="n">GLAT</span><span class="o">-</span><span class="n">TAN</span>  <span class="n">unit_y</span><span class="p">:</span> <span class="n">deg</span>    <span class="nb">range</span><span class="p">:</span>   <span class="o">-</span><span class="mf">47.119860</span> <span class="n">deg</span><span class="p">:</span>  <span class="o">-</span><span class="mf">40.759196</span> <span class="n">deg</span>
  <span class="n">n_s</span><span class="p">:</span>    <span class="mi">933</span>  <span class="n">type_s</span><span class="p">:</span> <span class="n">VRAD</span>      <span class="n">unit_s</span><span class="p">:</span> <span class="n">m</span> <span class="o">/</span> <span class="n">s</span>  <span class="nb">range</span><span class="p">:</span>  <span class="o">-</span><span class="mf">600207.218</span> <span class="n">m</span> <span class="o">/</span> <span class="n">s</span><span class="p">:</span>  <span class="mf">600409.133</span> <span class="n">m</span> <span class="o">/</span> <span class="n">s</span>
@@ -333,13 +340,13 @@ these astropy Quantity objects by slicing the data.</p>
 extract a little slab. We can do this easily, in any units that we want
 using the .spectral_slab() method</p>
 <p><span class="inputnumrole">In[9]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sub_cube_slab</span> <span class="o">=</span> <span class="n">sub_cube</span><span class="o">.</span><span class="n">spectral_slab</span><span class="p">(</span><span class="o">-</span><span class="mf">300.</span> <span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">km</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">s</span><span class="p">,</span> <span class="mf">300.</span> <span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">km</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">s</span><span class="p">)</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="n">sub_cube_slab</span> <span class="o">=</span> <span class="n">sub_cube</span><span class="o">.</span><span class="n">spectral_slab</span><span class="p">(</span><span class="o">-</span><span class="mf">300.</span> <span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">km</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">s</span><span class="p">,</span> <span class="mf">300.</span> <span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">km</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">s</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">sub_cube_slab</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><span class="outputnumrole">Out[9]:</span></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SpectralCube</span> <span class="k">with</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">467</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">85</span><span class="p">)</span> <span class="ow">and</span> <span class="n">unit</span><span class="o">=</span><span class="n">K</span><span class="p">:</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">SpectralCube</span> <span class="k">with</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">467</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">85</span><span class="p">)</span> <span class="ow">and</span> <span class="n">unit</span><span class="o">=</span><span class="n">K</span><span class="p">:</span>
  <span class="n">n_x</span><span class="p">:</span>     <span class="mi">85</span>  <span class="n">type_x</span><span class="p">:</span> <span class="n">GLON</span><span class="o">-</span><span class="n">TAN</span>  <span class="n">unit_x</span><span class="p">:</span> <span class="n">deg</span>    <span class="nb">range</span><span class="p">:</span>   <span class="mf">295.721832</span> <span class="n">deg</span><span class="p">:</span>  <span class="mf">305.875635</span> <span class="n">deg</span>
  <span class="n">n_y</span><span class="p">:</span>     <span class="mi">75</span>  <span class="n">type_y</span><span class="p">:</span> <span class="n">GLAT</span><span class="o">-</span><span class="n">TAN</span>  <span class="n">unit_y</span><span class="p">:</span> <span class="n">deg</span>    <span class="nb">range</span><span class="p">:</span>   <span class="o">-</span><span class="mf">47.119860</span> <span class="n">deg</span><span class="p">:</span>  <span class="o">-</span><span class="mf">40.759196</span> <span class="n">deg</span>
  <span class="n">n_s</span><span class="p">:</span>    <span class="mi">467</span>  <span class="n">type_s</span><span class="p">:</span> <span class="n">VRAD</span>      <span class="n">unit_s</span><span class="p">:</span> <span class="n">m</span> <span class="o">/</span> <span class="n">s</span>  <span class="nb">range</span><span class="p">:</span>  <span class="o">-</span><span class="mf">300053.130</span> <span class="n">m</span> <span class="o">/</span> <span class="n">s</span><span class="p">:</span>  <span class="mf">300255.045</span> <span class="n">m</span> <span class="o">/</span> <span class="n">s</span>
@@ -357,7 +364,7 @@ also convert to friendlier spectral units of km/s</p>
 <p>Also, these new 2D projections can be saved as new fits files, complete
 with modified WCS information</p>
 <p><span class="inputnumrole">In[10]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">moment_0</span> <span class="o">=</span> <span class="n">sub_cube_slab</span><span class="o">.</span><span class="n">with_spectral_unit</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">km</span><span class="o">/</span><span class="n">u</span><span class="o">.</span><span class="n">s</span><span class="p">)</span><span class="o">.</span><span class="n">moment</span><span class="p">(</span><span class="n">order</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="c1"># Zero-th moment</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="n">moment_0</span> <span class="o">=</span> <span class="n">sub_cube_slab</span><span class="o">.</span><span class="n">with_spectral_unit</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">km</span><span class="o">/</span><span class="n">u</span><span class="o">.</span><span class="n">s</span><span class="p">)</span><span class="o">.</span><span class="n">moment</span><span class="p">(</span><span class="n">order</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="c1"># Zero-th moment</span>
 <span class="n">moment_1</span> <span class="o">=</span> <span class="n">sub_cube_slab</span><span class="o">.</span><span class="n">with_spectral_unit</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">km</span><span class="o">/</span><span class="n">u</span><span class="o">.</span><span class="n">s</span><span class="p">)</span><span class="o">.</span><span class="n">moment</span><span class="p">(</span><span class="n">order</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># First moment</span>
 
 <span class="c1"># Write the moments as a FITS image</span>
@@ -372,7 +379,7 @@ with modified WCS information</p>
 </pre></div>
 </div>
 <p><span class="outputnumrole">Out[10]:</span></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Moment_0</span> <span class="n">has</span> <span class="n">units</span> <span class="n">of</span><span class="p">:</span>  <span class="n">K</span> <span class="n">km</span> <span class="o">/</span> <span class="n">s</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">Moment_0</span> <span class="n">has</span> <span class="n">units</span> <span class="n">of</span><span class="p">:</span>  <span class="n">K</span> <span class="n">km</span> <span class="o">/</span> <span class="n">s</span>
 <span class="n">Moment_1</span> <span class="n">has</span> <span class="n">units</span> <span class="n">of</span><span class="p">:</span>  <span class="n">km</span> <span class="o">/</span> <span class="n">s</span>
 </pre></div>
 </div>
@@ -395,7 +402,7 @@ options and even a combined version</p>
 <p>FITSFigure requires an HDU object as its argument which can easily be
 accessed with SpectralCube with <code class="docutils literal notranslate"><span class="pre">cube.hdu</span></code></p>
 <p><span class="inputnumrole">In[11]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initiate a figure</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="c1"># Initiate a figure</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
 
 <span class="c1"># Initiate a FITSFigure to set up axes</span>
@@ -410,7 +417,7 @@ accessed with SpectralCube with <code class="docutils literal notranslate"><span
 <span class="n">F</span><span class="o">.</span><span class="n">show_colorbar</span><span class="p">(</span><span class="n">axis_label_text</span> <span class="o">=</span> <span class="s1">&#39;Velocity (km / s)&#39;</span><span class="p">)</span>
 
 <span class="c1"># overplot contours of hi_column_density (essentially column density here)</span>
-<span class="n">F</span><span class="o">.</span><span class="n">show_contour</span><span class="p">(</span><span class="n">hi_column_density</span><span class="o">.</span><span class="n">hdu</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;Greys_r&#39;</span><span class="p">,</span> <span class="n">levels</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1e20</span><span class="p">,</span> <span class="mf">5e20</span><span class="p">,</span> <span class="mf">1e21</span><span class="p">,</span> <span class="mf">3e21</span><span class="p">,</span> <span class="mf">5e21</span><span class="p">,</span> <span class="mf">7e21</span><span class="p">,</span> <span class="mf">1e22</span><span class="p">))</span>
+<span class="n">F</span><span class="o">.</span><span class="n">show_contour</span><span class="p">(</span><span class="n">hi_column_density</span><span class="o">.</span><span class="n">hdu</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;Greys_r&#39;</span><span class="p">,</span> <span class="n">levels</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="n">e20</span><span class="p">,</span> <span class="mi">5</span><span class="n">e20</span><span class="p">,</span> <span class="mi">1</span><span class="n">e21</span><span class="p">,</span> <span class="mi">3</span><span class="n">e21</span><span class="p">,</span> <span class="mi">5</span><span class="n">e21</span><span class="p">,</span> <span class="mi">7</span><span class="n">e21</span><span class="p">,</span> <span class="mi">1</span><span class="n">e22</span><span class="p">))</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">labelsize</span> <span class="o">=</span> <span class="mi">16</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">labelsize</span> <span class="o">=</span> <span class="mi">16</span><span class="p">)</span>
@@ -421,7 +428,7 @@ accessed with SpectralCube with <code class="docutils literal notranslate"><span
 </pre></div>
 </div>
 <p><span class="outputnumrole">Out[11]:</span></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">Text</span> <span class="n">at</span> <span class="mh">0x7fd80a33e5f8</span><span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">Text</span> <span class="n">at</span> <span class="mh">0x7fd80a33e5f8</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>The
@@ -433,11 +440,11 @@ does, but in a more generalized and easy to streamline way.</p>
 transfer that projection to a matplotlib axis. SpectralCube makes it
 easy to access just the WCS object associated with a cube object.</p>
 <p><span class="inputnumrole">In[12]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">moment_1</span><span class="o">.</span><span class="n">wcs</span><span class="p">)</span> <span class="c1"># Examine the WCS object associated with the moment map</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="nb">print</span><span class="p">(</span><span class="n">moment_1</span><span class="o">.</span><span class="n">wcs</span><span class="p">)</span> <span class="c1"># Examine the WCS object associated with the moment map</span>
 </pre></div>
 </div>
 <p><span class="outputnumrole">Out[12]:</span></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WCS</span> <span class="n">Keywords</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">WCS</span> <span class="n">Keywords</span>
 
 <span class="n">Number</span> <span class="n">of</span> <span class="n">WCS</span> <span class="n">axes</span><span class="p">:</span> <span class="mi">2</span>
 <span class="n">CTYPE</span> <span class="p">:</span> <span class="s1">&#39;GLON-TAN&#39;</span>  <span class="s1">&#39;GLAT-TAN&#39;</span>
@@ -453,7 +460,7 @@ easy to access just the WCS object associated with a cube object.</p>
 (Galactic Longitude and Galactic Latitude). We can pass in this WCS
 object directly into a matplotlib axis instance</p>
 <p><span class="inputnumrole">In[13]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initiate a figure and axis object with WCS projection information</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="c1"># Initiate a figure and axis object with WCS projection information</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span><span class="n">projection</span> <span class="o">=</span> <span class="n">moment_1</span><span class="o">.</span><span class="n">wcs</span><span class="p">)</span>
 
@@ -476,16 +483,16 @@ object directly into a matplotlib axis instance</p>
 <span class="n">overlay</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_axislabel</span><span class="p">(</span><span class="s1">&#39;Declination (J2000)&#39;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">16</span><span class="p">)</span>
 
 <span class="c1"># Overplot column density contours</span>
-<span class="n">levels</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1e20</span><span class="p">,</span> <span class="mf">5e20</span><span class="p">,</span> <span class="mf">1e21</span><span class="p">,</span> <span class="mf">3e21</span><span class="p">,</span> <span class="mf">5e21</span><span class="p">,</span> <span class="mf">7e21</span><span class="p">,</span> <span class="mf">1e22</span><span class="p">)</span> <span class="c1"># Define contour levels to use</span>
+<span class="n">levels</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="n">e20</span><span class="p">,</span> <span class="mi">5</span><span class="n">e20</span><span class="p">,</span> <span class="mi">1</span><span class="n">e21</span><span class="p">,</span> <span class="mi">3</span><span class="n">e21</span><span class="p">,</span> <span class="mi">5</span><span class="n">e21</span><span class="p">,</span> <span class="mi">7</span><span class="n">e21</span><span class="p">,</span> <span class="mi">1</span><span class="n">e22</span><span class="p">)</span> <span class="c1"># Define contour levels to use</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">hi_column_density</span><span class="o">.</span><span class="n">hdu</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;Greys_r&#39;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>
            <span class="n">lw</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">levels</span> <span class="o">=</span> <span class="n">levels</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><span class="outputnumrole">Out[13]:</span></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WARNING</span><span class="p">:</span> <span class="n">A</span> <span class="s1">&#39;NAXIS1&#39;</span> <span class="n">keyword</span> <span class="n">already</span> <span class="n">exists</span> <span class="ow">in</span> <span class="n">this</span> <span class="n">header</span><span class="o">.</span>  <span class="n">Inserting</span> <span class="n">duplicate</span> <span class="n">keyword</span><span class="o">.</span> <span class="p">[</span><span class="n">astropy</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">fits</span><span class="o">.</span><span class="n">header</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">WARNING</span><span class="p">:</span> <span class="n">A</span> <span class="s1">&#39;NAXIS1&#39;</span> <span class="n">keyword</span> <span class="n">already</span> <span class="n">exists</span> <span class="ow">in</span> <span class="n">this</span> <span class="n">header</span><span class="o">.</span>  <span class="n">Inserting</span> <span class="n">duplicate</span> <span class="n">keyword</span><span class="o">.</span> <span class="p">[</span><span class="n">astropy</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">fits</span><span class="o">.</span><span class="n">header</span><span class="p">]</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">contour</span><span class="o">.</span><span class="n">QuadContourSet</span> <span class="n">at</span> <span class="mh">0x7fd80a207198</span><span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">contour</span><span class="o">.</span><span class="n">QuadContourSet</span> <span class="n">at</span> <span class="mh">0x7fd80a207198</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <img alt="../_images/FITS-cubes_27_2.png" src="../_images/FITS-cubes_27_2.png" />
@@ -508,7 +515,7 @@ opposed to the order of numpy array holding the data (velocity,
 latitude, longitude).</p>
 <p>We then select the appropriate data by indexing along the numpy array.</p>
 <p><span class="inputnumrole">In[14]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lat_slice</span> <span class="o">=</span> <span class="mi">35</span> <span class="c1"># Index of latitude dimension to slice along</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="n">lat_slice</span> <span class="o">=</span> <span class="mi">35</span> <span class="c1"># Index of latitude dimension to slice along</span>
 
 <span class="c1"># Initiate a figure and axis object with WCS projection information</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
@@ -556,18 +563,18 @@ object or a string specifying an object name. In this case, we can just
 search for the SMC. A radius to search around the object can also be
 specified.</p>
 <p><span class="inputnumrole">In[15]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Query for Herschel data in a 1 degree radius around the SMC</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="c1"># Query for Herschel data in a 1 degree radius around the SMC</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">ESASky</span><span class="o">.</span><span class="n">query_region_maps</span><span class="p">(</span><span class="s1">&#39;SMC&#39;</span><span class="p">,</span> <span class="n">radius</span> <span class="o">=</span> <span class="mi">1</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">,</span> <span class="n">missions</span> <span class="o">=</span> <span class="s1">&#39;Herschel&#39;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><span class="outputnumrole">Out[15]:</span></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">TableList</span> <span class="k">with</span> <span class="mi">1</span> <span class="n">tables</span><span class="p">:</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">TableList</span> <span class="k">with</span> <span class="mi">1</span> <span class="n">tables</span><span class="p">:</span>
     <span class="s1">&#39;0:HERSCHEL&#39;</span> <span class="k">with</span> <span class="mi">12</span> <span class="n">column</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="ow">and</span> <span class="mi">28</span> <span class="n">row</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WARNING</span><span class="p">:</span> <span class="n">W35</span><span class="p">:</span> <span class="kc">None</span><span class="p">:</span><span class="mi">4</span><span class="p">:</span><span class="mi">0</span><span class="p">:</span> <span class="n">W35</span><span class="p">:</span> <span class="s1">&#39;value&#39;</span> <span class="n">attribute</span> <span class="n">required</span> <span class="k">for</span> <span class="n">INFO</span> <span class="n">elements</span> <span class="p">[</span><span class="n">astropy</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">votable</span><span class="o">.</span><span class="n">tree</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">WARNING</span><span class="p">:</span> <span class="n">W35</span><span class="p">:</span> <span class="kc">None</span><span class="p">:</span><span class="mi">4</span><span class="p">:</span><span class="mi">0</span><span class="p">:</span> <span class="n">W35</span><span class="p">:</span> <span class="s1">&#39;value&#39;</span> <span class="n">attribute</span> <span class="n">required</span> <span class="k">for</span> <span class="n">INFO</span> <span class="n">elements</span> <span class="p">[</span><span class="n">astropy</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">votable</span><span class="o">.</span><span class="n">tree</span><span class="p">]</span>
 <span class="n">WARNING</span><span class="p">:</span> <span class="n">W35</span><span class="p">:</span> <span class="kc">None</span><span class="p">:</span><span class="mi">5</span><span class="p">:</span><span class="mi">0</span><span class="p">:</span> <span class="n">W35</span><span class="p">:</span> <span class="s1">&#39;value&#39;</span> <span class="n">attribute</span> <span class="n">required</span> <span class="k">for</span> <span class="n">INFO</span> <span class="n">elements</span> <span class="p">[</span><span class="n">astropy</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">votable</span><span class="o">.</span><span class="n">tree</span><span class="p">]</span>
 <span class="n">WARNING</span><span class="p">:</span> <span class="n">W35</span><span class="p">:</span> <span class="kc">None</span><span class="p">:</span><span class="mi">5</span><span class="p">:</span><span class="mi">28</span><span class="p">:</span> <span class="n">W35</span><span class="p">:</span> <span class="s1">&#39;value&#39;</span> <span class="n">attribute</span> <span class="n">required</span> <span class="k">for</span> <span class="n">INFO</span> <span class="n">elements</span> <span class="p">[</span><span class="n">astropy</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">votable</span><span class="o">.</span><span class="n">tree</span><span class="p">]</span>
 <span class="n">WARNING</span><span class="p">:</span> <span class="n">W35</span><span class="p">:</span> <span class="kc">None</span><span class="p">:</span><span class="mi">5</span><span class="p">:</span><span class="mi">53</span><span class="p">:</span> <span class="n">W35</span><span class="p">:</span> <span class="s1">&#39;value&#39;</span> <span class="n">attribute</span> <span class="n">required</span> <span class="k">for</span> <span class="n">INFO</span> <span class="n">elements</span> <span class="p">[</span><span class="n">astropy</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">votable</span><span class="o">.</span><span class="n">tree</span><span class="p">]</span>
@@ -579,11 +586,11 @@ specified.</p>
 that can be downloaded. We can see what information is available in this
 Table List by examining the keys in the Herschel Table</p>
 <p><span class="inputnumrole">In[16]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;HERSCHEL&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="n">result</span><span class="p">[</span><span class="s1">&#39;HERSCHEL&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
 </pre></div>
 </div>
 <p><span class="outputnumrole">Out[16]:</span></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;postcard_url&#39;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="p">[</span><span class="s1">&#39;postcard_url&#39;</span><span class="p">,</span>
  <span class="s1">&#39;product_url&#39;</span><span class="p">,</span>
  <span class="s1">&#39;observation_id&#39;</span><span class="p">,</span>
  <span class="s1">&#39;observation_oid&#39;</span><span class="p">,</span>
@@ -600,7 +607,7 @@ Table List by examining the keys in the Herschel Table</p>
 <p>We want to find a 350 micron image, so we need to look closer at the
 filters used for these observations.</p>
 <p><span class="inputnumrole">In[17]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;HERSCHEL&#39;</span><span class="p">][</span><span class="s1">&#39;filter&#39;</span><span class="p">]</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="n">result</span><span class="p">[</span><span class="s1">&#39;HERSCHEL&#39;</span><span class="p">][</span><span class="s1">&#39;filter&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 <p><span class="outputnumrole">Out[17]:</span></p>
@@ -637,7 +644,7 @@ do this is by making a boolean mask to select out the Table entry
 corresponding with the desired filter. Then, the ESASky.get_maps()
 method will download our data provided a TableList argument.</p>
 <p><span class="inputnumrole">In[18]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">filters</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;HERSCHEL&#39;</span><span class="p">][</span><span class="s1">&#39;filter&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="c1"># Convert the list of filters from the query to a string</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="n">filters</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;HERSCHEL&#39;</span><span class="p">][</span><span class="s1">&#39;filter&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="c1"># Convert the list of filters from the query to a string</span>
 
 <span class="c1"># Construct a boolean mask, searching for only the desired filters</span>
 <span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s1">&#39;250, 350, 500&#39;</span> <span class="o">==</span> <span class="n">s</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">filters</span><span class="p">],</span> <span class="n">dtype</span> <span class="o">=</span> <span class="s1">&#39;bool&#39;</span><span class="p">)</span>
@@ -650,7 +657,7 @@ method will download our data provided a TableList argument.</p>
 </pre></div>
 </div>
 <p><span class="outputnumrole">Out[18]:</span></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Starting download of HERSCHEL data. (5 files)
+<div class="highlight-default notranslate"><div class="highlight"><pre>Starting download of HERSCHEL data. (5 files)
 Downloading Observation ID: 1342205055 from http://archives.esac.esa.int/hsa/aio/jsp/standaloneproduct.jsp?RETRIEVAL_TYPE=STANDALONE&amp;OBSERVATION.OBSERVATION_ID=1342205055&amp;OBSERVING_MODE.OBSERVING_MODE_NAME=SpirePacsParallel&amp;INSTRUMENT.INSTRUMENT_NAME=SPIRE [Done]
 Downloading Observation ID: 1342198566 from http://archives.esac.esa.int/hsa/aio/jsp/standaloneproduct.jsp?RETRIEVAL_TYPE=STANDALONE&amp;OBSERVATION.OBSERVATION_ID=1342198566&amp;OBSERVING_MODE.OBSERVING_MODE_NAME=SpirePacsParallel&amp;INSTRUMENT.INSTRUMENT_NAME=SPIRE [Done]
 Downloading Observation ID: 1342205092 from http://archives.esac.esa.int/hsa/aio/jsp/standaloneproduct.jsp?RETRIEVAL_TYPE=STANDALONE&amp;OBSERVATION.OBSERVATION_ID=1342205092&amp;OBSERVING_MODE.OBSERVING_MODE_NAME=SpirePacsParallel&amp;INSTRUMENT.INSTRUMENT_NAME=SPIRE [Done]
@@ -676,14 +683,14 @@ downloaded object, such as errors.</p>
 <p>Let’s go ahead and extract just the WCS information and image data from
 the 350 micron image.</p>
 <p><span class="inputnumrole">In[19]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">herschel_header</span> <span class="o">=</span> <span class="n">IR_images</span><span class="p">[</span><span class="s1">&#39;HERSCHEL&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;350&#39;</span><span class="p">][</span><span class="s1">&#39;image&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">header</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="n">herschel_header</span> <span class="o">=</span> <span class="n">IR_images</span><span class="p">[</span><span class="s1">&#39;HERSCHEL&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;350&#39;</span><span class="p">][</span><span class="s1">&#39;image&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">header</span>
 <span class="n">herschel_wcs</span> <span class="o">=</span> <span class="n">WCS</span><span class="p">(</span><span class="n">IR_images</span><span class="p">[</span><span class="s1">&#39;HERSCHEL&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;350&#39;</span><span class="p">][</span><span class="s1">&#39;image&#39;</span><span class="p">])</span> <span class="c1"># Extract WCS information</span>
 <span class="n">herschel_imagehdu</span> <span class="o">=</span> <span class="n">IR_images</span><span class="p">[</span><span class="s1">&#39;HERSCHEL&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;350&#39;</span><span class="p">][</span><span class="s1">&#39;image&#39;</span><span class="p">]</span> <span class="c1"># Extract Image data</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">herschel_wcs</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><span class="outputnumrole">Out[19]:</span></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WCS</span> <span class="n">Keywords</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">WCS</span> <span class="n">Keywords</span>
 
 <span class="n">Number</span> <span class="n">of</span> <span class="n">WCS</span> <span class="n">axes</span><span class="p">:</span> <span class="mi">2</span>
 <span class="n">CTYPE</span> <span class="p">:</span> <span class="s1">&#39;RA---TAN&#39;</span>  <span class="s1">&#39;DEC--TAN&#39;</span>
@@ -697,7 +704,7 @@ matplotlib with
 <a class="reference external" href="http://docs.astropy.org/en/stable/visualization/wcsaxes/index.html">WCSAxes</a>
 and the LogNorm() object so we can log scale our image.</p>
 <p><span class="inputnumrole">In[20]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initiate a figure and axis object with WCS projection information</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="c1"># Initiate a figure and axis object with WCS projection information</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span><span class="n">projection</span> <span class="o">=</span> <span class="n">herschel_wcs</span><span class="p">)</span>
 
@@ -713,7 +720,7 @@ and the LogNorm() object so we can log scale our image.</p>
 
 <span class="c1"># Add a colorbar</span>
 <span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">pad</span> <span class="o">=</span> <span class="o">.</span><span class="mi">07</span><span class="p">)</span>
-<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s1">&#39;Herschel 350&#39;</span><span class="sa">r</span><span class="s1">&#39;$\mu$m &#39;</span><span class="p">,</span><span class="s1">&#39;(&#39;</span><span class="p">,</span> <span class="n">herschel_header</span><span class="p">[</span><span class="s1">&#39;BUNIT&#39;</span><span class="p">],</span> <span class="s1">&#39;)&#39;</span><span class="p">]),</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">16</span><span class="p">)</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s1">&#39;Herschel 350&#39;r&#39;$\mu$m &#39;</span><span class="p">,</span><span class="s1">&#39;(&#39;</span><span class="p">,</span> <span class="n">herschel_header</span><span class="p">[</span><span class="s1">&#39;BUNIT&#39;</span><span class="p">],</span> <span class="s1">&#39;)&#39;</span><span class="p">]),</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">16</span><span class="p">)</span>
 
 <span class="c1"># Overlay set of Galactic Coordinate Axes</span>
 <span class="n">overlay</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_coords_overlay</span><span class="p">(</span><span class="s1">&#39;galactic&#39;</span><span class="p">)</span>
@@ -723,7 +730,7 @@ and the LogNorm() object so we can log scale our image.</p>
 </pre></div>
 </div>
 <p><span class="outputnumrole">Out[20]:</span></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">circleci</span><span class="o">/</span><span class="n">project</span><span class="o">/</span><span class="n">venv</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="o">.</span><span class="mi">6</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">matplotlib</span><span class="o">/</span><span class="n">colors</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">929</span><span class="p">:</span> <span class="ne">RuntimeWarning</span><span class="p">:</span> <span class="n">invalid</span> <span class="n">value</span> <span class="n">encountered</span> <span class="ow">in</span> <span class="n">less_equal</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">circleci</span><span class="o">/</span><span class="n">project</span><span class="o">/</span><span class="n">venv</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="o">.</span><span class="mi">6</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">matplotlib</span><span class="o">/</span><span class="n">colors</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">929</span><span class="p">:</span> <span class="ne">RuntimeWarning</span><span class="p">:</span> <span class="n">invalid</span> <span class="n">value</span> <span class="n">encountered</span> <span class="ow">in</span> <span class="n">less_equal</span>
   <span class="n">mask</span> <span class="o">|=</span> <span class="n">resdat</span> <span class="o">&lt;=</span> <span class="mi">0</span>
 <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">circleci</span><span class="o">/</span><span class="n">project</span><span class="o">/</span><span class="n">venv</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="o">.</span><span class="mi">6</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">matplotlib</span><span class="o">/</span><span class="n">colors</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">929</span><span class="p">:</span> <span class="ne">RuntimeWarning</span><span class="p">:</span> <span class="n">invalid</span> <span class="n">value</span> <span class="n">encountered</span> <span class="ow">in</span> <span class="n">less_equal</span>
   <span class="n">mask</span> <span class="o">|=</span> <span class="n">resdat</span> <span class="o">&lt;=</span> <span class="mi">0</span>
@@ -745,7 +752,7 @@ framework and the .get_transform() method.</p>
 method returns a transformation from a specified frame to the pixel/data
 coordinates. It accepts a string specifying the frame or a wcs object.</p>
 <p><span class="inputnumrole">In[21]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initiate a figure and axis object with WCS projection information</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="c1"># Initiate a figure and axis object with WCS projection information</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span><span class="n">projection</span> <span class="o">=</span> <span class="n">herschel_wcs</span><span class="p">)</span>
 
@@ -765,7 +772,7 @@ coordinates. It accepts a string specifying the frame or a wcs object.</p>
 
 <span class="c1"># Add a colorbar</span>
 <span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">fraction</span><span class="o">=</span><span class="mf">0.046</span><span class="p">,</span> <span class="n">pad</span><span class="o">=-</span><span class="mf">0.1</span><span class="p">)</span>
-<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s1">&#39;Herschel 350&#39;</span><span class="sa">r</span><span class="s1">&#39;$\mu$m &#39;</span><span class="p">,</span><span class="s1">&#39;(&#39;</span><span class="p">,</span> <span class="n">herschel_header</span><span class="p">[</span><span class="s1">&#39;BUNIT&#39;</span><span class="p">],</span> <span class="s1">&#39;)&#39;</span><span class="p">]),</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">16</span><span class="p">)</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s1">&#39;Herschel 350&#39;r&#39;$\mu$m &#39;</span><span class="p">,</span><span class="s1">&#39;(&#39;</span><span class="p">,</span> <span class="n">herschel_header</span><span class="p">[</span><span class="s1">&#39;BUNIT&#39;</span><span class="p">],</span> <span class="s1">&#39;)&#39;</span><span class="p">]),</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">16</span><span class="p">)</span>
 
 <span class="c1"># Overlay set of RA/Dec Axes</span>
 <span class="n">overlay</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_coords_overlay</span><span class="p">(</span><span class="s1">&#39;galactic&#39;</span><span class="p">)</span>
@@ -776,7 +783,7 @@ coordinates. It accepts a string specifying the frame or a wcs object.</p>
 <span class="n">hi_transform</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_transform</span><span class="p">(</span><span class="n">hi_column_density</span><span class="o">.</span><span class="n">wcs</span><span class="p">)</span> <span class="c1"># extract axes Transform information for the HI data</span>
 
 <span class="c1"># Overplot column density contours</span>
-<span class="n">levels</span> <span class="o">=</span> <span class="p">(</span><span class="mf">2e21</span><span class="p">,</span> <span class="mf">3e21</span><span class="p">,</span> <span class="mf">5e21</span><span class="p">,</span> <span class="mf">7e21</span><span class="p">,</span> <span class="mf">8e21</span><span class="p">,</span> <span class="mf">1e22</span><span class="p">)</span> <span class="c1"># Define contour levels to use</span>
+<span class="n">levels</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="n">e21</span><span class="p">,</span> <span class="mi">3</span><span class="n">e21</span><span class="p">,</span> <span class="mi">5</span><span class="n">e21</span><span class="p">,</span> <span class="mi">7</span><span class="n">e21</span><span class="p">,</span> <span class="mi">8</span><span class="n">e21</span><span class="p">,</span> <span class="mi">1</span><span class="n">e22</span><span class="p">)</span> <span class="c1"># Define contour levels to use</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">hi_column_density</span><span class="o">.</span><span class="n">hdu</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;Greys_r&#39;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">lw</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">levels</span> <span class="o">=</span> <span class="n">levels</span><span class="p">,</span>
            <span class="n">transform</span> <span class="o">=</span> <span class="n">hi_transform</span><span class="p">)</span> <span class="c1"># include the transform information with the keyword &quot;transform&quot;</span>
 
@@ -785,7 +792,7 @@ coordinates. It accepts a string specifying the frame or a wcs object.</p>
 
 <span class="c1"># Add a second colorbar for the HI Velocity information</span>
 <span class="n">cbar_hi</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im_hi</span><span class="p">,</span> <span class="n">orientation</span> <span class="o">=</span> <span class="s1">&#39;horizontal&#39;</span><span class="p">,</span> <span class="n">fraction</span><span class="o">=</span><span class="mf">0.046</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.07</span><span class="p">)</span>
-<span class="n">cbar_hi</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;HI &#39;</span><span class="sa">r</span><span class="s1">&#39;$21$cm Mean Velocity (km/s)&#39;</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">16</span><span class="p">)</span>
+<span class="n">cbar_hi</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;HI &#39;r&#39;$21$cm Mean Velocity (km/s)&#39;</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">16</span><span class="p">)</span>
 
 <span class="c1"># Apply original image x and y coordinate limits</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">x_lim</span><span class="p">)</span>
@@ -793,13 +800,13 @@ coordinates. It accepts a string specifying the frame or a wcs object.</p>
 </pre></div>
 </div>
 <p><span class="outputnumrole">Out[21]:</span></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WARNING</span><span class="p">:</span> <span class="n">A</span> <span class="s1">&#39;NAXIS1&#39;</span> <span class="n">keyword</span> <span class="n">already</span> <span class="n">exists</span> <span class="ow">in</span> <span class="n">this</span> <span class="n">header</span><span class="o">.</span>  <span class="n">Inserting</span> <span class="n">duplicate</span> <span class="n">keyword</span><span class="o">.</span> <span class="p">[</span><span class="n">astropy</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">fits</span><span class="o">.</span><span class="n">header</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">WARNING</span><span class="p">:</span> <span class="n">A</span> <span class="s1">&#39;NAXIS1&#39;</span> <span class="n">keyword</span> <span class="n">already</span> <span class="n">exists</span> <span class="ow">in</span> <span class="n">this</span> <span class="n">header</span><span class="o">.</span>  <span class="n">Inserting</span> <span class="n">duplicate</span> <span class="n">keyword</span><span class="o">.</span> <span class="p">[</span><span class="n">astropy</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">fits</span><span class="o">.</span><span class="n">header</span><span class="p">]</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mf">2140.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="p">(</span><span class="mf">2140.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">circleci</span><span class="o">/</span><span class="n">project</span><span class="o">/</span><span class="n">venv</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="o">.</span><span class="mi">6</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">matplotlib</span><span class="o">/</span><span class="n">colors</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">929</span><span class="p">:</span> <span class="ne">RuntimeWarning</span><span class="p">:</span> <span class="n">invalid</span> <span class="n">value</span> <span class="n">encountered</span> <span class="ow">in</span> <span class="n">less_equal</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">circleci</span><span class="o">/</span><span class="n">project</span><span class="o">/</span><span class="n">venv</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="o">.</span><span class="mi">6</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">matplotlib</span><span class="o">/</span><span class="n">colors</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">929</span><span class="p">:</span> <span class="ne">RuntimeWarning</span><span class="p">:</span> <span class="n">invalid</span> <span class="n">value</span> <span class="n">encountered</span> <span class="ow">in</span> <span class="n">less_equal</span>
   <span class="n">mask</span> <span class="o">|=</span> <span class="n">resdat</span> <span class="o">&lt;=</span> <span class="mi">0</span>
 <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">circleci</span><span class="o">/</span><span class="n">project</span><span class="o">/</span><span class="n">venv</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="o">.</span><span class="mi">6</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">matplotlib</span><span class="o">/</span><span class="n">colors</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">929</span><span class="p">:</span> <span class="ne">RuntimeWarning</span><span class="p">:</span> <span class="n">invalid</span> <span class="n">value</span> <span class="n">encountered</span> <span class="ow">in</span> <span class="n">less_equal</span>
   <span class="n">mask</span> <span class="o">|=</span> <span class="n">resdat</span> <span class="o">&lt;=</span> <span class="mi">0</span>
@@ -828,17 +835,17 @@ image has a higher spatial resolution than that of the HI data cube. We
 can look more into this by taking a better look at both header objects
 and using reproject to downscale the Herschel Image.</p>
 <p><span class="inputnumrole">In[22]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;IR Resolution (dx,dy) = &#39;</span><span class="p">,</span> <span class="n">herschel_header</span><span class="p">[</span><span class="s1">&#39;cdelt1&#39;</span><span class="p">],</span> <span class="n">herschel_header</span><span class="p">[</span><span class="s1">&#39;cdelt2&#39;</span><span class="p">])</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;IR Resolution (dx,dy) = &#39;</span><span class="p">,</span> <span class="n">herschel_header</span><span class="p">[</span><span class="s1">&#39;cdelt1&#39;</span><span class="p">],</span> <span class="n">herschel_header</span><span class="p">[</span><span class="s1">&#39;cdelt2&#39;</span><span class="p">])</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;HI Resolution (dx,dy) = &#39;</span><span class="p">,</span> <span class="n">hi_column_density</span><span class="o">.</span><span class="n">hdu</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;cdelt1&#39;</span><span class="p">],</span> <span class="n">hi_column_density</span><span class="o">.</span><span class="n">hdu</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;cdelt1&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 <p><span class="outputnumrole">Out[22]:</span></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">IR</span> <span class="n">Resolution</span> <span class="p">(</span><span class="n">dx</span><span class="p">,</span><span class="n">dy</span><span class="p">)</span> <span class="o">=</span>  <span class="o">-</span><span class="mf">0.002777777777778</span> <span class="mf">0.002777777777777778</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">IR</span> <span class="n">Resolution</span> <span class="p">(</span><span class="n">dx</span><span class="p">,</span><span class="n">dy</span><span class="p">)</span> <span class="o">=</span>  <span class="o">-</span><span class="mf">0.002777777777778</span> <span class="mf">0.002777777777777778</span>
 <span class="n">HI</span> <span class="n">Resolution</span> <span class="p">(</span><span class="n">dx</span><span class="p">,</span><span class="n">dy</span><span class="p">)</span> <span class="o">=</span>  <span class="o">-</span><span class="mf">0.0833333333</span> <span class="o">-</span><span class="mf">0.0833333333</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WARNING</span><span class="p">:</span> <span class="n">A</span> <span class="s1">&#39;NAXIS1&#39;</span> <span class="n">keyword</span> <span class="n">already</span> <span class="n">exists</span> <span class="ow">in</span> <span class="n">this</span> <span class="n">header</span><span class="o">.</span>  <span class="n">Inserting</span> <span class="n">duplicate</span> <span class="n">keyword</span><span class="o">.</span> <span class="p">[</span><span class="n">astropy</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">fits</span><span class="o">.</span><span class="n">header</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">WARNING</span><span class="p">:</span> <span class="n">A</span> <span class="s1">&#39;NAXIS1&#39;</span> <span class="n">keyword</span> <span class="n">already</span> <span class="n">exists</span> <span class="ow">in</span> <span class="n">this</span> <span class="n">header</span><span class="o">.</span>  <span class="n">Inserting</span> <span class="n">duplicate</span> <span class="n">keyword</span><span class="o">.</span> <span class="p">[</span><span class="n">astropy</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">fits</span><span class="o">.</span><span class="n">header</span><span class="p">]</span>
 </pre></div>
 </div>
 <div class="alert alert-info"><p>Note: Different ways of accessing the header are shown above
@@ -856,7 +863,7 @@ Specifically, we will be using the
 function. This takes two arguments: an HDU object that you want to
 reproject, and a header containing WCS information to reproject onto.</p>
 <p><span class="inputnumrole">In[23]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rescaled_herschel_data</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">reproject_interp</span><span class="p">(</span><span class="n">herschel_imagehdu</span><span class="p">,</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="n">rescaled_herschel_data</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">reproject_interp</span><span class="p">(</span><span class="n">herschel_imagehdu</span><span class="p">,</span>
                                              <span class="c1"># reproject the Herschal image to match the HI data</span>
                                              <span class="n">hi_column_density</span><span class="o">.</span><span class="n">hdu</span><span class="o">.</span><span class="n">header</span><span class="p">)</span>
 
@@ -866,7 +873,7 @@ reproject, and a header containing WCS information to reproject onto.</p>
 </pre></div>
 </div>
 <p><span class="outputnumrole">Out[23]:</span></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WARNING</span><span class="p">:</span> <span class="n">A</span> <span class="s1">&#39;NAXIS1&#39;</span> <span class="n">keyword</span> <span class="n">already</span> <span class="n">exists</span> <span class="ow">in</span> <span class="n">this</span> <span class="n">header</span><span class="o">.</span>  <span class="n">Inserting</span> <span class="n">duplicate</span> <span class="n">keyword</span><span class="o">.</span> <span class="p">[</span><span class="n">astropy</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">fits</span><span class="o">.</span><span class="n">header</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">WARNING</span><span class="p">:</span> <span class="n">A</span> <span class="s1">&#39;NAXIS1&#39;</span> <span class="n">keyword</span> <span class="n">already</span> <span class="n">exists</span> <span class="ow">in</span> <span class="n">this</span> <span class="n">header</span><span class="o">.</span>  <span class="n">Inserting</span> <span class="n">duplicate</span> <span class="n">keyword</span><span class="o">.</span> <span class="p">[</span><span class="n">astropy</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">fits</span><span class="o">.</span><span class="n">header</span><span class="p">]</span>
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">rescaled_herschel_imagehdu</span></code> will now behave just like the other fits
@@ -874,7 +881,7 @@ images we have been working with, but now with a degraded resolution
 matching the HI data. This includes having its native coordinates in
 Galactic rather than RA and Dec.</p>
 <p><span class="inputnumrole">In[24]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initiate a figure and axis object with WCS projection information</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="c1"># Initiate a figure and axis object with WCS projection information</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span><span class="n">projection</span> <span class="o">=</span> <span class="n">WCS</span><span class="p">(</span><span class="n">rescaled_herschel_imagehdu</span><span class="p">))</span>
 
@@ -894,7 +901,7 @@ Galactic rather than RA and Dec.</p>
 
 <span class="c1"># Add a colorbar</span>
 <span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">fraction</span><span class="o">=</span><span class="mf">0.046</span><span class="p">,</span> <span class="n">pad</span><span class="o">=-</span><span class="mf">0.1</span><span class="p">)</span>
-<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s1">&#39;Herschel 350&#39;</span><span class="sa">r</span><span class="s1">&#39;$\mu$m &#39;</span><span class="p">,</span><span class="s1">&#39;(&#39;</span><span class="p">,</span> <span class="n">herschel_header</span><span class="p">[</span><span class="s1">&#39;BUNIT&#39;</span><span class="p">],</span> <span class="s1">&#39;)&#39;</span><span class="p">]),</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">16</span><span class="p">)</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s1">&#39;Herschel 350&#39;r&#39;$\mu$m &#39;</span><span class="p">,</span><span class="s1">&#39;(&#39;</span><span class="p">,</span> <span class="n">herschel_header</span><span class="p">[</span><span class="s1">&#39;BUNIT&#39;</span><span class="p">],</span> <span class="s1">&#39;)&#39;</span><span class="p">]),</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">16</span><span class="p">)</span>
 
 <span class="c1"># Overlay set of RA/Dec Axes</span>
 <span class="n">overlay</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_coords_overlay</span><span class="p">(</span><span class="s1">&#39;fk5&#39;</span><span class="p">)</span>
@@ -905,7 +912,7 @@ Galactic rather than RA and Dec.</p>
 <span class="n">hi_transform</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_transform</span><span class="p">(</span><span class="n">hi_column_density</span><span class="o">.</span><span class="n">wcs</span><span class="p">)</span> <span class="c1"># extract axes Transform information for the HI data</span>
 
 <span class="c1"># Overplot column density contours</span>
-<span class="n">levels</span> <span class="o">=</span> <span class="p">(</span><span class="mf">2e21</span><span class="p">,</span> <span class="mf">3e21</span><span class="p">,</span> <span class="mf">5e21</span><span class="p">,</span> <span class="mf">7e21</span><span class="p">,</span> <span class="mf">8e21</span><span class="p">,</span> <span class="mf">1e22</span><span class="p">)</span> <span class="c1"># Define contour levels to use</span>
+<span class="n">levels</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="n">e21</span><span class="p">,</span> <span class="mi">3</span><span class="n">e21</span><span class="p">,</span> <span class="mi">5</span><span class="n">e21</span><span class="p">,</span> <span class="mi">7</span><span class="n">e21</span><span class="p">,</span> <span class="mi">8</span><span class="n">e21</span><span class="p">,</span> <span class="mi">1</span><span class="n">e22</span><span class="p">)</span> <span class="c1"># Define contour levels to use</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">hi_column_density</span><span class="o">.</span><span class="n">hdu</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;Greys_r&#39;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">lw</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">levels</span> <span class="o">=</span> <span class="n">levels</span><span class="p">,</span>
            <span class="n">transform</span> <span class="o">=</span> <span class="n">hi_transform</span><span class="p">)</span> <span class="c1"># include the transform information with the keyword &quot;transform&quot;</span>
 
@@ -914,7 +921,7 @@ Galactic rather than RA and Dec.</p>
 
 <span class="c1"># Add a second colorbar for the HI Velocity information</span>
 <span class="n">cbar_hi</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im_hi</span><span class="p">,</span> <span class="n">orientation</span> <span class="o">=</span> <span class="s1">&#39;horizontal&#39;</span><span class="p">,</span> <span class="n">fraction</span><span class="o">=</span><span class="mf">0.046</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.07</span><span class="p">)</span>
-<span class="n">cbar_hi</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;HI &#39;</span><span class="sa">r</span><span class="s1">&#39;$21$cm Mean Velocity (km/s)&#39;</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">16</span><span class="p">)</span>
+<span class="n">cbar_hi</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;HI &#39;r&#39;$21$cm Mean Velocity (km/s)&#39;</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">16</span><span class="p">)</span>
 
 <span class="c1"># Apply original image x and y coordinate limits</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">x_lim</span><span class="p">)</span>
@@ -922,13 +929,13 @@ Galactic rather than RA and Dec.</p>
 </pre></div>
 </div>
 <p><span class="outputnumrole">Out[24]:</span></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WARNING</span><span class="p">:</span> <span class="n">A</span> <span class="s1">&#39;NAXIS1&#39;</span> <span class="n">keyword</span> <span class="n">already</span> <span class="n">exists</span> <span class="ow">in</span> <span class="n">this</span> <span class="n">header</span><span class="o">.</span>  <span class="n">Inserting</span> <span class="n">duplicate</span> <span class="n">keyword</span><span class="o">.</span> <span class="p">[</span><span class="n">astropy</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">fits</span><span class="o">.</span><span class="n">header</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">WARNING</span><span class="p">:</span> <span class="n">A</span> <span class="s1">&#39;NAXIS1&#39;</span> <span class="n">keyword</span> <span class="n">already</span> <span class="n">exists</span> <span class="ow">in</span> <span class="n">this</span> <span class="n">header</span><span class="o">.</span>  <span class="n">Inserting</span> <span class="n">duplicate</span> <span class="n">keyword</span><span class="o">.</span> <span class="p">[</span><span class="n">astropy</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">fits</span><span class="o">.</span><span class="n">header</span><span class="p">]</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mf">74.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="p">(</span><span class="mf">74.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">circleci</span><span class="o">/</span><span class="n">project</span><span class="o">/</span><span class="n">venv</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="o">.</span><span class="mi">6</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">matplotlib</span><span class="o">/</span><span class="n">colors</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">929</span><span class="p">:</span> <span class="ne">RuntimeWarning</span><span class="p">:</span> <span class="n">invalid</span> <span class="n">value</span> <span class="n">encountered</span> <span class="ow">in</span> <span class="n">less_equal</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">circleci</span><span class="o">/</span><span class="n">project</span><span class="o">/</span><span class="n">venv</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="o">.</span><span class="mi">6</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">matplotlib</span><span class="o">/</span><span class="n">colors</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">929</span><span class="p">:</span> <span class="ne">RuntimeWarning</span><span class="p">:</span> <span class="n">invalid</span> <span class="n">value</span> <span class="n">encountered</span> <span class="ow">in</span> <span class="n">less_equal</span>
   <span class="n">mask</span> <span class="o">|=</span> <span class="n">resdat</span> <span class="o">&lt;=</span> <span class="mi">0</span>
 <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">circleci</span><span class="o">/</span><span class="n">project</span><span class="o">/</span><span class="n">venv</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="o">.</span><span class="mi">6</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">matplotlib</span><span class="o">/</span><span class="n">colors</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">929</span><span class="p">:</span> <span class="ne">RuntimeWarning</span><span class="p">:</span> <span class="n">invalid</span> <span class="n">value</span> <span class="n">encountered</span> <span class="ow">in</span> <span class="n">less_equal</span>
   <span class="n">mask</span> <span class="o">|=</span> <span class="n">resdat</span> <span class="o">&lt;=</span> <span class="mi">0</span>
@@ -954,10 +961,9 @@ distortions in the image can change.</p>
 <a href="https://beta.mybinder.org/v2/gh/astropy/astropy-tutorials/master?filepath=/tutorials/notebooks//.ipynb"><button id="binder">Interactive tutorial notebook</button></a></div>
 </div>
 
-
-
-        
+</div>
       </div>  
+      
     </div>
   </div>
 </div>
@@ -968,7 +974,7 @@ distortions in the image can change.</p>
       
     </p>
     <p>
-    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
     &copy; Copyright Astropy.   
     </p>
   </div>

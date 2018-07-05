@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap_sandstone.css" type="text/css" />
     <link rel="stylesheet" href="_static/astropy.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
@@ -17,27 +17,34 @@
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <script type="text/javascript" src="_static/searchtools.js"></script>
     <script type="text/javascript" src="https://use.fontawesome.com/3168e95f94.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-<meta charset='utf-8'>
-<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
-<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
-<meta name="apple-mobile-web-app-capable" content="yes">
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <script type="text/javascript">
+    jQuery(function() { Search.loadIndex("searchindex.js"); });
+  </script>
+  
+  <script type="text/javascript" id="searchindexloader"></script>
+   
 
   </head><body>
 
 
 
 <div class="container-fluid landing text-center">
-  <img src="_static/astropy_logo.png" id="astropy-logo">
+  <a href="/"><img src="_static/astropy_logo.png" id="astropy-logo"></a>
   <form class="input-group col-sm-7 m-auto"  id="search-bar" action="search.html" method="get">
       <div class="input-group-prepend">
           <button class="input-group-text" type="submit"><i class="fa fa-search fa-fw"></i></button>
       </div>
-      <input type="text" name="q" class="form-control" placeholder="Search the universe" />
-    </form>  
+      <input type="text" name="q" id="search-bar-input" class="form-control" placeholder="Search the universe" />
+  </form>
 </div>
 
 <div class="container-fluid row definition-cards">
@@ -49,7 +56,7 @@
   </div>
   <div class="card bg-tutorial col-sm-2 p-0 m-2">
     <div class="card-body">
-        <h2 class="card-title text-center"><a href="#" class="text-white">Tutorials</a></h2>
+        <h2 class="card-title text-center"><a href="/tutorials.html?q=filterTutorials" class="text-white">Tutorials</a></h2>
       <p class="card-text text-center">Tutorials are step-by-step cookbooks for common activities that incorporate several packages. They are more specific and less conceptual than Guides but more extended than Examples.</p>
     </div>
   </div>
@@ -79,15 +86,76 @@
  </div>
   <input type="hidden" name="check_keywords" value="yes" />
   <input type="hidden" name="area" value="default" />
-</form><ul>
-<li><a class="reference internal" href="#">Tutorials</a><ul>
-<li><a class="reference internal" href="#list-of-tutorials">List of tutorials</a></li>
-<li><a class="reference internal" href="#for-contributors">For contributors</a></li>
-<li><a class="reference internal" href="#for-developers">For developers</a></li>
-</ul>
-</li>
-</ul>
+</form><script>
+    //checking the active filters
+    $(document).ready(function(){
+        var activeFilters = $.getQueryParameters();
+        var filters = document.getElementsByClassName('custom-control-input');
+        for(var f=0; filters[f]; ++f){
+            if(activeFilters.q[0].search(filters[f].value)!=-1)
+                filters[f].checked = true;   
+        }
+        document.getElementById("search-bar-input").value = ''
+    });
+    
+    //no results found
+    $(window).on("load", function(){
+            if(!document.getElementsByClassName('result-card').length)
+                {document.getElementById('search-results').innerHTML += '<h3>No tutorials found!</h3>'}
+    });  
 
+    //update filters
+    function applyFilter(){
+        var checkedValue = 'filterTutorials';    //because we only want to search the tutorials 
+        var inputElements = document.getElementsByClassName('custom-control-input');
+        for(var i=0; inputElements[i]; ++i){
+            if(inputElements[i].checked){
+                checkedValue += '+' + inputElements[i].value ;   //new query
+            }
+        }
+        var url = "http://localhost:8000/tutorials.html?q="+checkedValue;
+        window.location.href = url;
+    }
+</script>
+
+<form name="filterForm" class="form-group" style="padding-left: 20px;" action="">
+  <div class="custom-control custom-checkbox">
+    <input type="checkbox" name="q" class="custom-control-input" id="customCheck1" value="astroquery" onClick="applyFilter()">
+    <label class="custom-control-label" for="customCheck1">astroquery</label>
+  </div>
+  <div class="custom-control custom-checkbox">
+    <input type="checkbox" name="q" class="custom-control-input" id="customCheck2" value="contour plots" onClick="applyFilter()">
+    <label class="custom-control-label" for="customCheck2">contour plots</label>
+  </div>
+  <div class="custom-control custom-checkbox">
+    <input type="checkbox" name="q" class="custom-control-input" id="customCheck3" value="coordinates" onClick="applyFilter()">
+    <label class="custom-control-label" for="customCheck3">coordinates</label>
+  </div>
+  <div class="custom-control custom-checkbox">
+    <input type="checkbox" name="q" class="custom-control-input" id="customCheck4" value="data cubes" onClick="applyFilter()">
+    <label class="custom-control-label" for="customCheck4">data cubes</label>
+  </div>
+  <div class="custom-control custom-checkbox">
+    <input type="checkbox" name="q" class="custom-control-input" id="customCheck5" value="documentation" onClick="applyFilter()">
+    <label class="custom-control-label" for="customCheck5">documentation</label>
+  </div>
+  <div class="custom-control custom-checkbox">
+    <input type="checkbox" name="q" class="custom-control-input" id="customCheck6" value="dynamics" onClick="applyFilter()">
+    <label class="custom-control-label" for="customCheck6">dynamics</label>
+  </div>
+  <div class="custom-control custom-checkbox">
+    <input type="checkbox" name="q" class="custom-control-input" id="customCheck7" value="errorbars" onClick="applyFilter()">
+    <label class="custom-control-label" for="customCheck7">errorbars</label>
+  </div>
+  <div class="custom-control custom-checkbox">
+    <input type="checkbox" name="q" class="custom-control-input" id="customCheck8" value="fits image" onClick="applyFilter()">
+    <label class="custom-control-label" for="customCheck8">fits image</label>
+  </div>
+  <div class="custom-control custom-checkbox">
+    <input type="checkbox" name="q" class="custom-control-input" id="customCheck9" value="fits table" onClick="applyFilter()">
+    <label class="custom-control-label" for="customCheck9">fits table</label>
+  </div>
+</form>
       </div>
     </div>
 
@@ -97,66 +165,23 @@
     
     
 
-    <div class="col-md-9 content-padding card">
-      <div>  
-        
+    <div class="col-md-9">
+      <div class="content-padding card">
+        <div>
   <div class="section" id="tutorials">
 <h1>Tutorials<a class="headerlink" href="#tutorials" title="Permalink to this headline">¶</a></h1>
 <p>The tutorials on this site walk through some typical software tasks and
 demonstrate the features in Astropy sub-packages in the context of a story or
 standard workflow. See the <a class="reference external" href="http://docs.astropy.org/">Astropy documentation</a>
 for a structured view of the functionality within the Astropy project.</p>
-<div class="section" id="list-of-tutorials">
-<h2>List of tutorials<a class="headerlink" href="#list-of-tutorials" title="Permalink to this headline">¶</a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="rst-tutorials/Coordinates-Intro.html">Getting Started with astropy.coordinates</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rst-tutorials/Coordinates-Transform.html">Transforming between coordinate systems</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rst-tutorials/FITS-cubes.html">Working with FITS-cubes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rst-tutorials/FITS-header.html">Edit a FITS header</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rst-tutorials/FITS-images.html">Viewing and manipulating FITS images</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rst-tutorials/FITS-tables.html">Viewing and manipulating data from FITS tables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rst-tutorials/UVES.html">Analyzing UVES Spectroscopy with Astropy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rst-tutorials/conesearch.html">VO Simple Cone Search Tutorial</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rst-tutorials/coordinates.html">Using <code class="docutils literal notranslate"><span class="pre">astropy.coordinates</span></code> to Match Catalogs and Plan Observations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rst-tutorials/plot-catalog.html">Read in catalog information from a text file and plot some parameters</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rst-tutorials/quantities.html">Using Astropy Quantities for astrophysical calculations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rst-tutorials/redshift-plot.html">Make a plot with both redshift and universe age axes using astropy.cosmology</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rst-tutorials/synthetic-images.html">Synthetic Images from simulated data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rst-tutorials/units-and-integration.html">Using <code class="docutils literal notranslate"><span class="pre">scipy.integrate</span></code></a></li>
-</ul>
-</div>
-</div>
-<div class="section" id="for-contributors">
-<h2>For contributors<a class="headerlink" href="#for-contributors" title="Permalink to this headline">¶</a></h2>
-<p>We welcome feedback, improvements, and new tutorial content via the <a class="reference external" href="https://github.com/astropy/astropy-tutorials">Astropy
-Tutorials repository</a>  on
-GitHub. If you find a typo or would like to clarify some text, please either
-<a class="reference external" href="https://github.com/astropy/astropy-tutorials/issues/new">create an issue</a> or
-make the change yourself and then submit a pull request directly to the
-repository. Questions and/or comments about the tutorials are welcome on the
-<a class="reference external" href="https://groups.google.com/forum/#!forum/astropy-dev">astropy-dev</a> mailing
-list. For more information, please see the contributing documentation:
-<span class="xref std std-ref">contributing-page</span>.</p>
-<p>If you would like to contribute to this effort, but need some inspiration, check
-out the <a class="reference external" href="https://github.com/astropy/astropy-tutorials/labels/content-new">open issues for new content</a> and see the
-contributing documentation <span class="xref std std-ref">contributing-page</span>. This is a collaborative
-effort and we are looking for contributions and ideas from users like you!</p>
-</div>
-<div class="section" id="for-developers">
-<h2>For developers<a class="headerlink" href="#for-developers" title="Permalink to this headline">¶</a></h2>
-<p>See the developer documentation: <a class="reference internal" href="dev.html#dev-page"><span class="std std-ref">Documentation on tutorials infrastructure</span></a>.</p>
-</div>
+<p>Check the relevant keywords in the sidebox.</p>
 </div>
 
-
-
-        
-          
-  <div class="damnIExist"></div>
-<div id="search-results"></div>
-        
+</div>
       </div>  
+      
+        <div id="search-results" class="tut-results"></div>  
+      
     </div>
   </div>
 </div>
@@ -167,7 +192,7 @@ effort and we are looking for contributions and ideas from users like you!</p>
       
     </p>
     <p>
-    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
     &copy; Copyright Astropy.   
     </p>
   </div>

@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/bootstrap_sandstone.css" type="text/css" />
     <link rel="stylesheet" href="../_static/astropy.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
@@ -18,21 +18,28 @@
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <script type="text/javascript" src="../_static/searchtools.js"></script>
     <script type="text/javascript" src="https://use.fontawesome.com/3168e95f94.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-<meta charset='utf-8'>
-<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
-<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
-<meta name="apple-mobile-web-app-capable" content="yes">
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <script type="text/javascript">
+    jQuery(function() { Search.loadIndex("../searchindex.js"); });
+  </script>
+  
+  <script type="text/javascript" id="searchindexloader"></script>
+   
 
   </head><body>
 
 
 
 <nav class="navbar navbar-expand-lg bg-navbar">
-  <a class="navbar-brand" href="/">Learn.Astropy</a>
+  <a class="navbar-brand" href="/"style="padding: 0px 5px;"><img src="../_static/astropy_logo.png" style="height:38px;"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -73,18 +80,18 @@
 </li>
 </ul>
 
-    </div>    
+      </div>    
     </div>
     
 
-    <div class="col-md-9 content-padding card">
-      <div>  
-        
+    <div class="col-md-9">
+      <div class="content-padding card">
+        <div>
   <a href="../_static/plot-catalog/plot-catalog.ipynb"><button id="download">Download tutorial notebook</button></a>
 <a href="https://beta.mybinder.org/v2/gh/astropy/astropy-tutorials/master?filepath=/tutorials/notebooks/plot-catalog/plot-catalog.ipynb"><button id="binder">Interactive tutorial notebook</button></a>
 
 <div id="spacer"></div><p id="plot-catalog"><span class="inputnumrole">In[1]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="c1"># Set up matplotlib</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -100,7 +107,7 @@ tools for reading and writing ASCII data are provided with the
 methods implemented in <code class="docutils literal notranslate"><span class="pre">astropy.table</span></code>.</p>
 <p>We’ll start by importing the <code class="docutils literal notranslate"><span class="pre">ascii</span></code> subpackage:</p>
 <p><span class="inputnumrole">In[2]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">astropy.io</span> <span class="k">import</span> <span class="n">ascii</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">astropy.io</span> <span class="k">import</span> <span class="n">ascii</span>
 </pre></div>
 </div>
 <p>For many cases, it is sufficient to use the <code class="docutils literal notranslate"><span class="pre">ascii.read('filename')</span></code>
@@ -108,7 +115,7 @@ function as a black box for reading data from table-formatted text
 files. By default, this function will try to figure out how your data is
 formatted/delimited (by default, <code class="docutils literal notranslate"><span class="pre">guess=True</span></code>). For example, if your
 data are:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># name,ra,dec</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="c1"># name,ra,dec</span>
 <span class="n">BLG100</span><span class="p">,</span><span class="mi">17</span><span class="p">:</span><span class="mi">51</span><span class="p">:</span><span class="mf">00.0</span><span class="p">,</span><span class="o">-</span><span class="mi">29</span><span class="p">:</span><span class="mi">59</span><span class="p">:</span><span class="mi">48</span>
 <span class="n">BLG101</span><span class="p">,</span><span class="mi">17</span><span class="p">:</span><span class="mi">53</span><span class="p">:</span><span class="mf">40.2</span><span class="p">,</span><span class="o">-</span><span class="mi">29</span><span class="p">:</span><span class="mi">49</span><span class="p">:</span><span class="mi">52</span>
 <span class="n">BLG102</span><span class="p">,</span><span class="mi">17</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mf">20.2</span><span class="p">,</span><span class="o">-</span><span class="mi">29</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">51</span>
@@ -119,7 +126,7 @@ data are:</p>
 <p>(see <em>simple</em>table.csv_)</p>
 <p><code class="docutils literal notranslate"><span class="pre">ascii.read()</span></code> will return a <code class="docutils literal notranslate"><span class="pre">Table</span></code> object:</p>
 <p><span class="inputnumrole">In[3]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tbl</span> <span class="o">=</span> <span class="n">ascii</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;simple_table.csv&quot;</span><span class="p">)</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="n">tbl</span> <span class="o">=</span> <span class="n">ascii</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;simple_table.csv&quot;</span><span class="p">)</span>
 <span class="n">tbl</span>
 </pre></div>
 </div>
@@ -137,7 +144,7 @@ the delimiter is inferred from the rest of the file – awesome! We can
 access the columns directly from their names as ‘keys’ of the table
 object:</p>
 <p><span class="inputnumrole">In[4]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tbl</span><span class="p">[</span><span class="s2">&quot;ra&quot;</span><span class="p">]</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="n">tbl</span><span class="p">[</span><span class="s2">&quot;ra&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 <p><span class="outputnumrole">Out[4]:</span></p>
@@ -151,7 +158,7 @@ object:</p>
 decimal degrees, for example, we can pluck out the first (0th) item in
 the column and use the <code class="docutils literal notranslate"><span class="pre">coordinates</span></code> subpackage to parse the string:</p>
 <p><span class="inputnumrole">In[5]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">astropy.coordinates</span> <span class="k">as</span> <span class="nn">coord</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">astropy.coordinates</span> <span class="k">as</span> <span class="nn">coord</span>
 <span class="kn">import</span> <span class="nn">astropy.units</span> <span class="k">as</span> <span class="nn">u</span>
 
 <span class="n">first_row</span> <span class="o">=</span> <span class="n">tbl</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># get the first (0th) row</span>
@@ -160,13 +167,13 @@ the column and use the <code class="docutils literal notranslate"><span class="p
 </pre></div>
 </div>
 <p><span class="outputnumrole">Out[5]:</span></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">267.75</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="mf">267.75</span>
 </pre></div>
 </div>
 <p>Now let’s look at a case where this breaks, and we have to specify some
 more options to the <code class="docutils literal notranslate"><span class="pre">read()</span></code> function. Our data may look a bit
 messier:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">::</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="p">::</span>
 </pre></div>
 </div>
 <blockquote>
@@ -180,12 +187,12 @@ PC 0025+04,00 27 41.97 +05 03 41.7,6.92489,5.06,16.19,0.09,15.29,0.10,14.96,0.12
 the names out, and the column names become <code class="docutils literal notranslate"><span class="pre">col</span></code> followed by the
 number of the column:</p>
 <p><span class="inputnumrole">In[6]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tbl</span> <span class="o">=</span> <span class="n">ascii</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;Young-Objects-Compilation.csv&quot;</span><span class="p">)</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="n">tbl</span> <span class="o">=</span> <span class="n">ascii</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;Young-Objects-Compilation.csv&quot;</span><span class="p">)</span>
 <span class="n">tbl</span><span class="o">.</span><span class="n">colnames</span>
 </pre></div>
 </div>
 <p><span class="outputnumrole">Out[6]:</span></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;col1&#39;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="p">[</span><span class="s1">&#39;col1&#39;</span><span class="p">,</span>
  <span class="s1">&#39;col2&#39;</span><span class="p">,</span>
  <span class="s1">&#39;col3&#39;</span><span class="p">,</span>
  <span class="s1">&#39;col4&#39;</span><span class="p">,</span>
@@ -226,7 +233,7 @@ default names if <code class="docutils literal notranslate"><span class="pre">as
 We know it failed to read the column names, but also notice that the
 first row of data are strings – something else went wrong!</p>
 <p><span class="inputnumrole">In[7]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tbl</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="n">tbl</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
 <p><span class="outputnumrole">Out[7]:</span></p>
@@ -243,12 +250,12 @@ specifying the <code class="docutils literal notranslate"><span class="pre">head
 function. This keyword argument specifies the index of the row in the
 text file to read the column names from:</p>
 <p><span class="inputnumrole">In[8]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tbl</span> <span class="o">=</span> <span class="n">ascii</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;Young-Objects-Compilation.csv&quot;</span><span class="p">,</span> <span class="n">header_start</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="n">tbl</span> <span class="o">=</span> <span class="n">ascii</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;Young-Objects-Compilation.csv&quot;</span><span class="p">,</span> <span class="n">header_start</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">tbl</span><span class="o">.</span><span class="n">colnames</span>
 </pre></div>
 </div>
 <p><span class="outputnumrole">Out[8]:</span></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">,</span>
  <span class="s1">&#39;Designation&#39;</span><span class="p">,</span>
  <span class="s1">&#39;RA&#39;</span><span class="p">,</span>
  <span class="s1">&#39;Dec&#39;</span><span class="p">,</span>
@@ -291,17 +298,17 @@ data are assumed to start on the second row (index=1). We can specify
 <code class="docutils literal notranslate"><span class="pre">data_start=2</span></code> to tell the reader that the data in this file actually
 start on the 3rd (index=2) row:</p>
 <p><span class="inputnumrole">In[9]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tbl</span> <span class="o">=</span> <span class="n">ascii</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;Young-Objects-Compilation.csv&quot;</span><span class="p">,</span> <span class="n">header_start</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">data_start</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="n">tbl</span> <span class="o">=</span> <span class="n">ascii</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;Young-Objects-Compilation.csv&quot;</span><span class="p">,</span> <span class="n">header_start</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">data_start</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Some of the columns have missing data, for example, some of the <code class="docutils literal notranslate"><span class="pre">RA</span></code>
 values are missing (denoted by – when printed):</p>
 <p><span class="inputnumrole">In[10]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">tbl</span><span class="p">[</span><span class="s1">&#39;RA&#39;</span><span class="p">])</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="nb">print</span><span class="p">(</span><span class="n">tbl</span><span class="p">[</span><span class="s1">&#39;RA&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 <p><span class="outputnumrole">Out[10]:</span></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">RA</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre>    <span class="n">RA</span>
 <span class="o">---------</span>
   <span class="mf">1.01201</span>
   <span class="mf">6.92489</span>
@@ -334,7 +341,7 @@ tell <code class="docutils literal notranslate"><span class="pre">astropy</span>
 with the <code class="docutils literal notranslate"><span class="pre">.filled()</span></code> method. For example, to fill all of the missing
 values with <code class="docutils literal notranslate"><span class="pre">NaN</span></code>’s:</p>
 <p><span class="inputnumrole">In[11]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tbl</span><span class="p">[</span><span class="s1">&#39;RA&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">filled</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="n">tbl</span><span class="p">[</span><span class="s1">&#39;RA&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">filled</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><span class="outputnumrole">Out[11]:</span></p>
@@ -372,7 +379,7 @@ Our data file has an extra line above the column names, so we use the
 data starts on line 2 using the <code class="docutils literal notranslate"><span class="pre">data_start</span></code> keyword. Finally, we note
 some columns have missing values.</p>
 <p><span class="inputnumrole">In[12]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">ascii</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;Young-Objects-Compilation.csv&quot;</span><span class="p">,</span> <span class="n">header_start</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">data_start</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="n">data</span> <span class="o">=</span> <span class="n">ascii</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;Young-Objects-Compilation.csv&quot;</span><span class="p">,</span> <span class="n">header_start</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">data_start</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Now that we have our data loaded, let’s plot a color-magnitude diagram.</p>
@@ -386,14 +393,14 @@ before. Using this <code class="docutils literal notranslate"><span class="pre">
 quick plots and interactive use, but is not great if you need more
 control over your figures.</p>
 <p><span class="inputnumrole">In[13]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;Jmag&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;Kmag&quot;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;Jmag&quot;</span><span class="p">])</span> <span class="c1"># plot J-K vs. J</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;Jmag&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;Kmag&quot;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;Jmag&quot;</span><span class="p">])</span> <span class="c1"># plot J-K vs. J</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">()))</span> <span class="c1"># flip the y-axis</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$J-K_s$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$J$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><span class="outputnumrole">Out[13]:</span></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">Text</span> <span class="n">at</span> <span class="mh">0x7f8bb24dfac8</span><span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">Text</span> <span class="n">at</span> <span class="mh">0x7f8bb24dfac8</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <img alt="../_images/plot-catalog_27_1.png" src="../_images/plot-catalog_27_1.png" />
@@ -414,26 +421,26 @@ handling angular values, <code class="docutils literal notranslate"><span class=
 our column of RA values to radians, and wrap the angle bounds using this
 class.</p>
 <p><span class="inputnumrole">In[14]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ra</span> <span class="o">=</span> <span class="n">coord</span><span class="o">.</span><span class="n">Angle</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;RA&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">filled</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">degree</span><span class="p">)</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="n">ra</span> <span class="o">=</span> <span class="n">coord</span><span class="o">.</span><span class="n">Angle</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;RA&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">filled</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">degree</span><span class="p">)</span>
 <span class="n">ra</span> <span class="o">=</span> <span class="n">ra</span><span class="o">.</span><span class="n">wrap_at</span><span class="p">(</span><span class="mi">180</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">degree</span><span class="p">)</span>
 <span class="n">dec</span> <span class="o">=</span> <span class="n">coord</span><span class="o">.</span><span class="n">Angle</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Dec&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">filled</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">degree</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><span class="inputnumrole">In[15]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s2">&quot;mollweide&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">ra</span><span class="o">.</span><span class="n">radian</span><span class="p">,</span> <span class="n">dec</span><span class="o">.</span><span class="n">radian</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><span class="outputnumrole">Out[15]:</span></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">collections</span><span class="o">.</span><span class="n">PathCollection</span> <span class="n">at</span> <span class="mh">0x7f8bb2586278</span><span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">collections</span><span class="o">.</span><span class="n">PathCollection</span> <span class="n">at</span> <span class="mh">0x7f8bb2586278</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <img alt="../_images/plot-catalog_30_1.png" src="../_images/plot-catalog_30_1.png" />
 <p>By default, matplotlib will add degree ticklabels, so let’s change the
 horizontal (x) tick labels to be in units of hours, and display a grid</p>
 <p><span class="inputnumrole">In[16]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s2">&quot;mollweide&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">ra</span><span class="o">.</span><span class="n">radian</span><span class="p">,</span> <span class="n">dec</span><span class="o">.</span><span class="n">radian</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([</span><span class="s1">&#39;14h&#39;</span><span class="p">,</span><span class="s1">&#39;16h&#39;</span><span class="p">,</span><span class="s1">&#39;18h&#39;</span><span class="p">,</span><span class="s1">&#39;20h&#39;</span><span class="p">,</span><span class="s1">&#39;22h&#39;</span><span class="p">,</span><span class="s1">&#39;0h&#39;</span><span class="p">,</span><span class="s1">&#39;2h&#39;</span><span class="p">,</span><span class="s1">&#39;4h&#39;</span><span class="p">,</span><span class="s1">&#39;6h&#39;</span><span class="p">,</span><span class="s1">&#39;8h&#39;</span><span class="p">,</span><span class="s1">&#39;10h&#39;</span><span class="p">])</span>
@@ -444,7 +451,7 @@ horizontal (x) tick labels to be in units of hours, and display a grid</p>
 <img alt="../_images/plot-catalog_32_0.png" src="../_images/plot-catalog_32_0.png" />
 <p>We can save this figure as a PDF using the <code class="docutils literal notranslate"><span class="pre">savefig</span></code> function:</p>
 <p><span class="inputnumrole">In[17]:</span></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;map.pdf&quot;</span><span class="p">)</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;map.pdf&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="section" id="exercises">
@@ -461,10 +468,9 @@ understand?</p>
 <a href="https://beta.mybinder.org/v2/gh/astropy/astropy-tutorials/master?filepath=/tutorials/notebooks//.ipynb"><button id="binder">Interactive tutorial notebook</button></a></div>
 </div>
 
-
-
-        
+</div>
       </div>  
+      
     </div>
   </div>
 </div>
@@ -475,7 +481,7 @@ understand?</p>
       
     </p>
     <p>
-    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
     &copy; Copyright Astropy.   
     </p>
   </div>
